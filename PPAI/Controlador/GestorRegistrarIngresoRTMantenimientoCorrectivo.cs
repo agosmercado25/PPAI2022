@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PPAI.Entidades
+namespace PPAI.Controlador
 {
-    public class TipoRecursoTecnológico
+    public class GestorRegistrarIngresoRTMantenimientoCorrectivo
     {
-        private string nombre;
-        private string descripcion;
+         
     }
 }

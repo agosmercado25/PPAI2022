@@ -8,5 +8,6 @@ namespace PPAI.Entidades
 {
     public class Marca
     {
+        private string nombre;
     }
 }

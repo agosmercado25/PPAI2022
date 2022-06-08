@@ -8,5 +8,7 @@ namespace PPAI.Entidades
 {
     public class AsignaciónCientificoDelCI
     {
+        private DateTime fechaDesde;
+        private DateTime fechaHasta;
     }
 }

@@ -8,5 +8,7 @@ namespace PPAI.Entidades
 {
     public class CambioEstadoRT
     {
+        private DateTime fechaHoraDesde;
+        private DateTime fechaHoraHasta;
     }
 }

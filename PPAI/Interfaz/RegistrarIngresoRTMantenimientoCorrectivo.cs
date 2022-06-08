@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PPAI
 {
-    public partial class Form1 : Form
+    public partial class RegistrarIngresoRTMantenimientoCorrectivo : Form
     {
-        public Form1()
+        public RegistrarIngresoRTMantenimientoCorrectivo()
         {
             InitializeComponent();
         }

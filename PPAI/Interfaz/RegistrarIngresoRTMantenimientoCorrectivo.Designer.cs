@@ -1,6 +1,6 @@
 ﻿namespace PPAI
 {
-    partial class Form1
+    partial class RegistrarIngresoRTMantenimientoCorrectivo
     {
         /// <summary>
         /// Variable del diseñador necesaria.

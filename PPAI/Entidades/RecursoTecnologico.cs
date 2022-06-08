@@ -8,5 +8,11 @@ namespace PPAI.Entidades
 {
     public class RecursoTecnologico
     {
+        private int numeroRT;
+        private DateTime fechaAlta;
+        private string imagenes;
+        private int periodicidadMantenimientoPrev;
+        private int duracionMantenimientoPrev;
+        private int fraccionHorarioTurnos;
     }
 }

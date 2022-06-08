@@ -8,5 +8,7 @@ namespace PPAI.Entidades
 {
     public class AsignaciónResponsableTecnicoRT
     {
+        private DateTime fechaDesde;
+        private DateTime fechaHasta;
     }
 }

@@ -8,5 +8,9 @@ namespace PPAI.Entidades
 {
     public class Mantenimiento
     {
+        private DateTime fechaFin;
+        private DateTime fechaInicio;
+        private DateTime fechaInicioPrevista;
+        private string motivoMantenimiento;
     }
 }

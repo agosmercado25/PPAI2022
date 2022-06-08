@@ -8,5 +8,10 @@ namespace PPAI.Entidades
 {
     public class Estado
     {
+        private string nombre;
+        private string descripcion;
+        private string ambito;
+        private bool esReservable;
+        private bool esCancelable;
     }
 }

@@ -10,6 +10,7 @@ namespace PPAI.Entidades
     {
         private string usuario;
         private string clave;
+        private bool habilitado;
 
         public Usuario(string nombreUsuario, string password)
         {
@@ -27,6 +28,18 @@ namespace PPAI.Entidades
         {
             get => clave;
             set => clave = value;
+        }
+
+        public bool Habilitar
+        {
+            get => habilitado; 
+            set => habilitado = true;
+        }
+
+        public bool Inhabilitar
+        {
+            get => habilitado;
+            set => habilitado = false;
         }
     }
 }

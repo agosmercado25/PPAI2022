@@ -8,5 +8,9 @@ namespace PPAI.Entidades
 {
     public class Turno
     {
+        private DateTime fechaGeneracion;
+        private string diaSemana;
+        private DateTime fechaHoraInicio;
+        private DateTime fechaHoraFin;
     }
 }
