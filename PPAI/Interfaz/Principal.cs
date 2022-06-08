@@ -10,11 +10,18 @@ using System.Windows.Forms;
 
 namespace PPAI.Interfaz
 {
-    public partial class RegistrarIngresoRTMantenimientoCorrectivo : Form
+    public partial class Principal : Form
     {
-        public RegistrarIngresoRTMantenimientoCorrectivo()
+        public Principal()
         {
             InitializeComponent();
+        }
+
+        private void btnprobar_Click(object sender, EventArgs e)
+        {
+            RegistrarIngresoRTMantenimientoCorrectivo ventana = new RegistrarIngresoRTMantenimientoCorrectivo();
+            ventana.Show();
+
         }
     }
 }

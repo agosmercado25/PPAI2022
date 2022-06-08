@@ -3,9 +3,10 @@ D:\Agos\PPAI\PPAI\bin\Debug\PPAI.exe
 D:\Agos\PPAI\PPAI\bin\Debug\PPAI.pdb
 D:\Agos\PPAI\PPAI\obj\Debug\PPAI.csproj.AssemblyReference.cache
 D:\Agos\PPAI\PPAI\obj\Debug\PPAI.csproj.SuggestedBindingRedirects.cache
-D:\Agos\PPAI\PPAI\obj\Debug\PPAI.Form1.resources
 D:\Agos\PPAI\PPAI\obj\Debug\PPAI.Properties.Resources.resources
 D:\Agos\PPAI\PPAI\obj\Debug\PPAI.csproj.GenerateResource.cache
 D:\Agos\PPAI\PPAI\obj\Debug\PPAI.csproj.CoreCompileInputs.cache
 D:\Agos\PPAI\PPAI\obj\Debug\PPAI.exe
 D:\Agos\PPAI\PPAI\obj\Debug\PPAI.pdb
+D:\Agos\PPAI\PPAI\obj\Debug\PPAI.Interfaz.Principal.resources
+D:\Agos\PPAI\PPAI\obj\Debug\PPAI.Interfaz.RegistrarIngresoRTMantenimientoCorrectivo.resources

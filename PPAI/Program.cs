@@ -16,7 +16,7 @@ namespace PPAI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RegistrarIngresoRTMantenimientoCorrectivo());
+            Application.Run(new Interfaz.Principal());
         }
     }
 }
