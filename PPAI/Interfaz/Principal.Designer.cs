@@ -49,6 +49,7 @@
             this.Controls.Add(this.btnIngresarMantCorr);
             this.Name = "Principal";
             this.Text = "Principal";
+            this.Load += new System.EventHandler(this.Principal_Load);
             this.ResumeLayout(false);
 
         }

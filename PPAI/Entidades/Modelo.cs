@@ -8,6 +8,21 @@ namespace PPAI.Entidades
 {
     public class Modelo
     {
-        private string nombre;
+        string nombre;
+
+        public Modelo()
+        {
+
+        }
+
+        public Modelo(string nombre)
+        {
+            this.nombre = nombre;
+        }
+
+        public string mostrarNombre()
+        {
+            return nombre;
+        }
     }
 }

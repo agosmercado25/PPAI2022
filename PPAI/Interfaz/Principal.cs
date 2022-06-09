@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PPAI.Controlador;
 
 namespace PPAI.Interfaz
 {
@@ -19,8 +20,20 @@ namespace PPAI.Interfaz
 
         private void btnprobar_Click(object sender, EventArgs e)
         {
+            habilitarPantalla();
+        }
+
+        private void habilitarPantalla()
+        {
             RegistrarIngresoRTMantenimientoCorrectivo ventana = new RegistrarIngresoRTMantenimientoCorrectivo();
             ventana.Show();
+            this.Hide();
+            GestorRegistrarIngresoRTMantenimientoCorrectivo gestor = new GestorRegistrarIngresoRTMantenimientoCorrectivo();
+            
+        }
+
+        private void Principal_Load(object sender, EventArgs e)
+        {
 
         }
     }
