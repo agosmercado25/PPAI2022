@@ -18,7 +18,7 @@ namespace PPAI.Entidades
 
         public Marca(string nombre, List<Modelo> modelos)
         {
-            this.nombre = "marca1";
+            this.nombre = nombre;
             this.modelos = modelos;
         }
 

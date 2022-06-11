@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PPAI.AccesoDatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,11 @@ namespace PPAI.Entidades
         private string clave;
         private bool habilitado;
 
+        public Usuario()
+        {
+
+        }
+
         public Usuario(string nombreUsuario, string password)
         {
             this.usuario = nombreUsuario;
@@ -20,8 +26,8 @@ namespace PPAI.Entidades
 
         public string NombreDeUsuario
         {
-            get => usuario;
-            set => usuario = value;
+            get => this.usuario;
+            set => this.usuario = value;
         }
 
         public string Password
@@ -40,6 +46,27 @@ namespace PPAI.Entidades
         {
             get => habilitado;
             set => habilitado = false;
+        }
+
+        public bool esUsuario(string nombreUsuario)
+        {
+            bool usu;
+            bool esUsuario = AD_Usuario.ValidarExistenciaUsuario(nombreUsuario);
+            if (esUsuario)
+            {
+                usu = true;
+            }
+            else
+            {
+                usu = false;
+            }
+
+            return usu;
+        }
+
+        public string obtenerPersonal()
+        {
+            return NombreDeUsuario;
         }
     }
 }

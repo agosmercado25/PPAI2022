@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccesoDatos\AD_RecursosTecnologicos.cs" />
+    <Compile Include="AccesoDatos\AD_Usuario.cs" />
     <Compile Include="Entidades\AsignaciónResponsableTecnicoRT.cs" />
     <Compile Include="Entidades\CambioEstadoRT.cs" />
     <Compile Include="Entidades\CambioEstadoTurno.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Entidades\Modelo.cs" />
     <Compile Include="Entidades\PersonalCientifico.cs" />
     <Compile Include="Entidades\RecursoTecnologico.cs" />
+    <Compile Include="Entidades\Sesion.cs" />
     <Compile Include="Entidades\TipoRecursoTecnológico.cs" />
     <Compile Include="Entidades\Turno.cs" />
     <Compile Include="Entidades\Usuario.cs" />

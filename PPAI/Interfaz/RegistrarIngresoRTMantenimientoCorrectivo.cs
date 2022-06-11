@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PPAI.AccesoDatos;
+using PPAI.Controlador;
+using PPAI.Entidades;
 
 namespace PPAI.Interfaz
 {
@@ -20,6 +22,8 @@ namespace PPAI.Interfaz
 
         private void RegistrarIngresoRTMantenimientoCorrectivo_Load(object sender, EventArgs e)
         {
+            GestorRegistrarIngresoRTMantenimientoCorrectivo gestor = new GestorRegistrarIngresoRTMantenimientoCorrectivo();
+            gestor.registrarIngresoRTMantenimientoCorrectivo();
             obtenerRTDisponibles();
         }
 

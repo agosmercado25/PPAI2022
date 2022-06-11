@@ -8,11 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PPAI.Controlador;
+using PPAI.Entidades;
 
 namespace PPAI.Interfaz
 {
     public partial class Principal : Form
     {
+
         public Principal()
         {
             InitializeComponent();
@@ -28,8 +30,6 @@ namespace PPAI.Interfaz
             RegistrarIngresoRTMantenimientoCorrectivo ventana = new RegistrarIngresoRTMantenimientoCorrectivo();
             ventana.Show();
             this.Hide();
-            GestorRegistrarIngresoRTMantenimientoCorrectivo gestor = new GestorRegistrarIngresoRTMantenimientoCorrectivo();
-            
         }
 
         private void Principal_Load(object sender, EventArgs e)

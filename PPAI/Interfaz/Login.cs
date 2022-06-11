@@ -20,12 +20,10 @@ namespace PPAI.Interfaz
 
         private void btnIniciarSesion_Click(object sender, EventArgs e)
         {
-            Usuario usuario = new Usuario(txtNombreUsuario.Text, txtContraseña.Text);
-
-            string usuarioCorrecto = "admin";
-            string contraseñaCorrecta = "123456";
-
-            if (txtNombreUsuario.Text.Equals(usuarioCorrecto) && txtContraseña.Text.Equals(contraseñaCorrecta))
+            DateTime horaInicio = DateTime.Now;
+            Sesion sesionActual = new Sesion(horaInicio, horaInicio, null);
+            bool se = sesionActual.esTuUsuario(txtNombreUsuario.Text, txtContraseña.Text);
+            if (se)
             {
                 Principal menuPrincipal = new Principal();
                 menuPrincipal.Show();
@@ -35,6 +33,27 @@ namespace PPAI.Interfaz
             {
                 MessageBox.Show("Los valores ingresados son incorrectos");
             }
-        }   
+
+            //Usuario usuario = new Usuario(txtNombreUsuario.Text, txtContraseña.Text);
+
+            //string usuarioCorrecto = "admin";
+            //string contraseñaCorrecta = "123456";
+
+            //if (txtNombreUsuario.Text.Equals(usuarioCorrecto) && txtContraseña.Text.Equals(contraseñaCorrecta))
+            //{
+            //    Principal menuPrincipal = new Principal();
+            //    menuPrincipal.Show();
+            //    this.Hide();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Los valores ingresados son incorrectos");
+            //}
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
