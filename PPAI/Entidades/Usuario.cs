@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,10 +19,11 @@ namespace PPAI.Entidades
 
         }
 
-        public Usuario(string nombreUsuario, string password)
+        public Usuario(string nombreUsuario, string password,bool habilitado)
         {
             this.usuario = nombreUsuario;
             this.clave = password;
+            this.habilitado = habilitado;
         }
 
         public string NombreDeUsuario
@@ -68,5 +70,7 @@ namespace PPAI.Entidades
         {
             return NombreDeUsuario;
         }
+
+
     }
 }

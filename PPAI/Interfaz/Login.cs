@@ -22,8 +22,10 @@ namespace PPAI.Interfaz
         {
             DateTime horaInicio = DateTime.Now;
             Sesion sesionActual = new Sesion(horaInicio, horaInicio, null);
-            bool se = sesionActual.esTuUsuario(txtNombreUsuario.Text, txtContraseña.Text);
-            if (se)
+            Usuario se = sesionActual.esTuUsuario(txtNombreUsuario.Text, txtContraseña.Text);
+            sesionActual.UsuarioSeleccionado = se;
+            //MessageBox.Show(sesionActual.UsuarioSeleccionado.NombreDeUsuario);
+            if (se != null)
             {
                 Principal menuPrincipal = new Principal();
                 menuPrincipal.Show();

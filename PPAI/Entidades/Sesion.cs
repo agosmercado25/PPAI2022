@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 
 namespace PPAI.Entidades
 {
@@ -25,26 +26,50 @@ namespace PPAI.Entidades
             this.usuarioSeleccionado = usuarioSeleccionado;
         }
 
-        public bool esTuUsuario(string nombreUsuario, string contraseña)
+        public DateTime FechaHoraInicio
         {
-            Usuario logueado = new Usuario(nombreUsuario, contraseña);
+            get => this.fechaHoraInicio;
+            set => this.fechaHoraInicio = value;
+        }
+
+        public DateTime FechaHoraFin
+        {
+            get => this.fechaHoraFin;
+            set => this.fechaHoraFin = value;
+        }
+
+        public Usuario UsuarioSeleccionado
+        {
+            get => this.usuarioSeleccionado;
+            set => this.usuarioSeleccionado = value;
+        }
+
+        public Usuario esTuUsuario(string nombreUsuario, string contraseña)
+        {
+            Usuario logueado = new Usuario(nombreUsuario, contraseña, true);
             bool usu = logueado.esUsuario(nombreUsuario);
             if (usu)
             {
-                return true;
+                return logueado;
             }
             else
             {
-                return false;
+                return null;
             }
         }
 
-        public string mostrarCientifico()
+        public string mostrarCientifico(Sesion sesionActual)
         {
-            this.usuarioSeleccionado = new Usuario();
-            this.usuarioSeleccionado.obtenerPersonal();
-            return this.usuarioSeleccionado.ToString();
-            
+            string mensaje = "No hay usuario seleccionado";
+            if(sesionActual.usuarioSeleccionado != null)
+            { 
+                return mensaje;
+            }
+            else
+            {
+                string logueado = usuarioSeleccionado.obtenerPersonal();
+                return logueado;
+            }
         }
     }
 }

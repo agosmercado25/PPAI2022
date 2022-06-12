@@ -34,15 +34,17 @@ namespace PPAI.Controlador
 
         public void registrarIngresoRTMantenimientoCorrectivo()
         {
-            string cientifico = obtenerUsuarioLogueado();
-            MessageBox.Show(cientifico.ToString());
+            Sesion cientifico = obtenerUsuarioLogueado();
+            
         }
 
-        public string obtenerUsuarioLogueado()
+        public Sesion obtenerUsuarioLogueado()
         {
-            this.sesion = new Sesion();
-            this.sesion.mostrarCientifico();
-            return this.sesion.ToString();
+            Sesion sesionActual = new Sesion();
+            this.sesion = sesionActual;
+            MessageBox.Show("Cientifico" + this.sesion.mostrarCientifico(sesionActual));
+            return sesionActual;
         }
+
     }    
 }
