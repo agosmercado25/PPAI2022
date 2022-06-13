@@ -22,9 +22,9 @@ namespace PPAI.Interfaz
 
         private void RegistrarIngresoRTMantenimientoCorrectivo_Load(object sender, EventArgs e)
         {
-            GestorRegistrarIngresoRTMantenimientoCorrectivo gestor = new GestorRegistrarIngresoRTMantenimientoCorrectivo();
+            GestorRegistrarIngresoRTMantenimientoCorrectivo gestor = new GestorRegistrarIngresoRTMantenimientoCorrectivo(this);
             gestor.registrarIngresoRTMantenimientoCorrectivo();
-            obtenerRTDisponibles();
+            //obtenerRTDisponibles();
         }
 
         private void txtBoxRTDisponibles_TextChanged(object sender, EventArgs e)
@@ -32,11 +32,11 @@ namespace PPAI.Interfaz
             
         }
 
-        private void obtenerRTDisponibles()
+        public void mostrarRTDisponibles(List<RecursoTecnologico> rt)
         {
             try
             {
-                grillaRTDisponibles.DataSource = AD_RecursosTecnologicos.esDisponible();
+                grillaRTDisponibles.DataSource = rt;
             }
             catch (Exception)
             {

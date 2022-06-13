@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.grillaRTDisponibles = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaRTDisponibles)).BeginInit();
             this.SuspendLayout();
@@ -43,10 +43,19 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(527, 426);
+            this.groupBox1.Size = new System.Drawing.Size(1028, 426);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Recursos Tecnológicos";
+            // 
+            // grillaRTDisponibles
+            // 
+            this.grillaRTDisponibles.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.grillaRTDisponibles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grillaRTDisponibles.Location = new System.Drawing.Point(12, 82);
+            this.grillaRTDisponibles.Name = "grillaRTDisponibles";
+            this.grillaRTDisponibles.Size = new System.Drawing.Size(998, 178);
+            this.grillaRTDisponibles.TabIndex = 2;
             // 
             // label1
             // 
@@ -57,21 +66,12 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Recursos disponibles:";
             // 
-            // grillaRTDisponibles
-            // 
-            this.grillaRTDisponibles.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.grillaRTDisponibles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grillaRTDisponibles.Location = new System.Drawing.Point(12, 82);
-            this.grillaRTDisponibles.Name = "grillaRTDisponibles";
-            this.grillaRTDisponibles.Size = new System.Drawing.Size(498, 178);
-            this.grillaRTDisponibles.TabIndex = 2;
-            // 
             // RegistrarIngresoRTMantenimientoCorrectivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(551, 450);
+            this.ClientSize = new System.Drawing.Size(1052, 450);
             this.Controls.Add(this.groupBox1);
             this.Name = "RegistrarIngresoRTMantenimientoCorrectivo";
             this.Text = "Ingreso a Mantenimiento Correctivo";

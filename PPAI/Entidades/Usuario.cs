@@ -19,7 +19,7 @@ namespace PPAI.Entidades
 
         }
 
-        public Usuario(string nombreUsuario, string password,bool habilitado)
+        public Usuario(string nombreUsuario, string password, bool habilitado)
         {
             this.usuario = nombreUsuario;
             this.clave = password;
@@ -66,11 +66,10 @@ namespace PPAI.Entidades
             return usu;
         }
 
-        public string obtenerPersonal()
+        public Usuario obtenerPersonal()
         {
-            return NombreDeUsuario;
+            
+            return this;
         }
-
-
     }
 }

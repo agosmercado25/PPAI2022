@@ -8,23 +8,42 @@ namespace PPAI.Entidades
 {
     public class Marca
     {
-        string nombre;
-        List<Modelo> modelos;
+        private int id;
+        private string nombre;
+        private List<Modelo> modelos;
+
+        public int Id
+        {
+            get => id;
+            set => id = value;
+        }
+
+        public string Nombre
+        {
+            get => nombre;
+            set => nombre = value;
+        }
+
+        public List<Modelo> Modelos 
+        { 
+            get => modelos; set => modelos = value;
+        }
 
         public Marca()
         {
 
         }
 
-        public Marca(string nombre, List<Modelo> modelos)
+        public Marca(int id, string nombre, List<Modelo> modelos)
         {
+            this.id = id;
             this.nombre = nombre;
             this.modelos = modelos;
         }
 
         public string mostrarMisMarcas()
         {
-            return this.nombre;
+            return Nombre;
         }
     }
 }
