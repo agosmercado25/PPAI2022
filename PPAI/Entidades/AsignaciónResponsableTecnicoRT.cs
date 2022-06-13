@@ -68,6 +68,7 @@ namespace PPAI.Entidades
         public List<RecursoTecnologico> obtenerRTDisponibles(AsignaciónResponsableTecnicoRT ra)
         {
             rt = ra.RT;
+            //string tipo, modelo, marca;
             for (int i = 0; i < rt.Count; i++)
             {
                 bool esDispo = rt[i].esDisponible(rt[i]);
@@ -77,7 +78,14 @@ namespace PPAI.Entidades
                 }
             }
 
+            //for (int i = 0; i < rt.Count; i++)
+            //{
+            //    rt[i].mostrarDatosRT(rt[i]);
+            //}
+
             return rt;
         }
+
+
     }
 }

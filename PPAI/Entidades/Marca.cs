@@ -41,7 +41,7 @@ namespace PPAI.Entidades
             this.modelos = modelos;
         }
 
-        public string mostrarMisMarcas()
+        public string mostrarNombre()
         {
             return Nombre;
         }

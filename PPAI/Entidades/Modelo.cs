@@ -33,7 +33,7 @@ namespace PPAI.Entidades
             this.nombre = nombre;
         }
 
-        public string mostrarNombre()
+        public string mostrarMarcaYModelo()
         {
             return Nombre;
         }

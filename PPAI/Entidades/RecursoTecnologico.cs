@@ -106,5 +106,10 @@ namespace PPAI.Entidades
 
             return false;
         }
+
+        public void mostrarDatosRT(RecursoTecnologico rt)
+        {
+            
+        }
     }
 }
