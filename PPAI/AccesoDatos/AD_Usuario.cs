@@ -5,11 +5,13 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PPAI.Entidades;
 
 namespace PPAI.AccesoDatos
 {
     public class AD_Usuario
     {
+                
         public static bool ValidarExistenciaUsuario(string nombre)
         {
             string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
@@ -51,6 +53,6 @@ namespace PPAI.AccesoDatos
             {
                 cn.Close();
             }
-        }
+        } 
     }
 }

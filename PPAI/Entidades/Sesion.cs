@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PPAI.AccesoDatos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -10,9 +11,10 @@ namespace PPAI.Entidades
 {
     public class Sesion
     {
-        DateTime fechaHoraFin;
-        DateTime fechaHoraInicio;
-        Usuario usuarioSeleccionado;
+
+        private DateTime fechaHoraFin;
+        private DateTime fechaHoraInicio;
+        private Usuario usuarioSeleccionado;
 
         public Sesion()
         {
@@ -47,6 +49,7 @@ namespace PPAI.Entidades
         public Usuario esTuUsuario(string nombreUsuario, string contraseña)
         {
             Usuario logueado = new Usuario(nombreUsuario, contraseña, true);
+            this.usuarioSeleccionado = logueado;
             bool usu = logueado.esUsuario(nombreUsuario);
             if (usu)
             {
@@ -58,18 +61,27 @@ namespace PPAI.Entidades
             }
         }
 
-        public string mostrarCientifico(Sesion sesionActual)
+        public Usuario mostrarCientifico(Sesion sesionActual)
         {
-            string mensaje = "No hay usuario seleccionado";
-            if(sesionActual.usuarioSeleccionado != null)
-            { 
-                return mensaje;
+            sesionActual.UsuarioSeleccionado = Datos.usuario;
+            
+            if(sesionActual.UsuarioSeleccionado != null)
+            {
+                return UsuarioSeleccionado.obtenerPersonal();
+                
             }
             else
             {
-                string logueado = usuarioSeleccionado.obtenerPersonal();
-                return logueado;
+                MessageBox.Show("No hay usuario seleccionado");
+                return null;
             }
         }
+
+        public Usuario mostrarCientifico2()
+        {
+            return this.usuarioSeleccionado.obtenerPersonal();
+        }
+
+
     }
 }

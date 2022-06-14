@@ -20,6 +20,7 @@ namespace PPAI.Interfaz
             InitializeComponent();
         }
 
+
         private void btnprobar_Click(object sender, EventArgs e)
         {
             habilitarPantalla();

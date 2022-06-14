@@ -100,10 +100,12 @@
   <ItemGroup>
     <Compile Include="AccesoDatos\AD_RecursosTecnologicos.cs" />
     <Compile Include="AccesoDatos\AD_Usuario.cs" />
+    <Compile Include="AccesoDatos\Datos.cs" />
     <Compile Include="Entidades\AsignaciónResponsableTecnicoRT.cs" />
     <Compile Include="Entidades\CambioEstadoRT.cs" />
     <Compile Include="Entidades\CambioEstadoTurno.cs" />
     <Compile Include="Entidades\AsignaciónCientificoDelCI.cs" />
+    <Compile Include="Entidades\CentroDeInvestigacion.cs" />
     <Compile Include="Entidades\Estado.cs" />
     <Compile Include="Controlador\GestorRegistrarIngresoRTMantenimientoCorrectivo.cs" />
     <Compile Include="Entidades\Mantenimiento.cs" />

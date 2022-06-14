@@ -3,28 +3,57 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PPAI.AccesoDatos;
 
 namespace PPAI.Entidades
 {
     public class Marca
     {
-        string nombre;
-        List<Modelo> modelos;
+        private int id;
+        private string nombre;
+        private List<Modelo> modelos;
+
+        public int Id
+        {
+            get => id;
+            set => id = value;
+        }
+
+        public string Nombre
+        {
+            get => nombre;
+            set => nombre = value;
+        }
+
+        public List<Modelo> Modelos 
+        { 
+            get => modelos; set => modelos = value;
+        }
 
         public Marca()
         {
 
         }
 
-        public Marca(string nombre, List<Modelo> modelos)
+        public Marca(int id, string nombre, List<Modelo> modelos)
         {
+            this.id = id;
             this.nombre = nombre;
             this.modelos = modelos;
         }
 
-        public string mostrarMisMarcas()
+        public string mostrarNombre(RecursoTecnologico rt)
         {
-            return this.nombre;
+            Marca marca = Datos.marca1;
+            for (int i = 0; i < marca.Modelos.Count; i++)
+            {
+                if (marca.Modelos[i].Nombre.Equals(rt.Modelo.ToString()))
+                {
+                    return marca.Modelos[i].Nombre;
+                }
+            }
+
+            return null;
         }
     }
 }

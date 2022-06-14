@@ -19,7 +19,7 @@ namespace PPAI.Entidades
 
         }
 
-        public Usuario(string nombreUsuario, string password,bool habilitado)
+        public Usuario(string nombreUsuario, string password, bool habilitado)
         {
             this.usuario = nombreUsuario;
             this.clave = password;
@@ -52,25 +52,22 @@ namespace PPAI.Entidades
 
         public bool esUsuario(string nombreUsuario)
         {
-            bool usu;
-            bool esUsuario = AD_Usuario.ValidarExistenciaUsuario(nombreUsuario);
-            if (esUsuario)
+            usuario = "admin";
+            clave = "admin";
+            if (nombreUsuario.Equals(usuario))
             {
-                usu = true;
+                return true;
             }
             else
             {
-                usu = false;
+                return false;
             }
-
-            return usu;
         }
 
-        public string obtenerPersonal()
+        public Usuario obtenerPersonal()
         {
-            return NombreDeUsuario;
+            
+            return this;
         }
-
-
     }
 }
