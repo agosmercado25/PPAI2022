@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PPAI.AccesoDatos;
 
 namespace PPAI.Entidades
 {
@@ -33,8 +34,10 @@ namespace PPAI.Entidades
             this.nombre = nombre;
         }
 
-        public string mostrarMarcaYModelo()
+        public string mostrarMarcaYModelo(RecursoTecnologico rt)
         {
+            Marca marca = Datos.marca1;
+            string marcaP = marca.mostrarNombre(rt);
             return Nombre;
         }
     }

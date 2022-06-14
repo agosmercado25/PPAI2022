@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PPAI.AccesoDatos;
 
 namespace PPAI.Entidades
 {
@@ -41,9 +42,18 @@ namespace PPAI.Entidades
             this.modelos = modelos;
         }
 
-        public string mostrarNombre()
+        public string mostrarNombre(RecursoTecnologico rt)
         {
-            return Nombre;
+            Marca marca = Datos.marca1;
+            for (int i = 0; i < marca.Modelos.Count; i++)
+            {
+                if (marca.Modelos[i].Nombre.Equals(rt.Modelo.ToString()))
+                {
+                    return marca.Modelos[i].Nombre;
+                }
+            }
+
+            return null;
         }
     }
 }

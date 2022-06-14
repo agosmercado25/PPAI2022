@@ -49,5 +49,7 @@ namespace PPAI.Entidades
             this.turno = turnos;
             
         }
+
+
     }
 }

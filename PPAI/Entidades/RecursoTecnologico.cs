@@ -107,9 +107,11 @@ namespace PPAI.Entidades
             return false;
         }
 
-        public void mostrarDatosRT(RecursoTecnologico rt)
+        public int mostrarDatosRT(RecursoTecnologico rt)
         {
-            
+            string marca;
+            //modelo, marca = mostrarMarcaYModelo(rt);
+            return rt.NumeroRT;
         }
     }
 }

@@ -42,5 +42,16 @@ namespace PPAI.Entidades
             this.asignaci = asignaci;
             
         }
+
+        //public bool esLogueadoCI(CentroDeInvestigacion ci)
+        //{
+        //    for (int i= 0; i < this.AsignaciónCientificoDelCIs.Count; i++)
+        //    {
+        //        if (asignaci[i].esDeCentro())
+        //        {
+                    
+        //        } ;
+        //    }
+        //}
     }
 }

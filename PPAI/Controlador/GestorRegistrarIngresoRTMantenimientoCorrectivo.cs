@@ -20,6 +20,8 @@ namespace PPAI.Controlador
         private List<AsignaciónResponsableTecnicoRT> asigResTecRT;
         private AsignaciónResponsableTecnicoRT ra;
         private PersonalCientifico pc;
+        private RecursoTecnologico rtSelec;
+        private DateTime fechaFinPrevista;
         
 
         public GestorRegistrarIngresoRTMantenimientoCorrectivo()
@@ -39,11 +41,15 @@ namespace PPAI.Controlador
 
         public void registrarIngresoRTMantenimientoCorrectivo()
         {
-            obtenerUsuarioLogueado();
+            CentroDeInvestigacion ci = Datos.ci;
+            obtenerUsuarioLogueado(ci);
             PersonalCientifico pc = obtenerPersonalCientifico();
             ra = obtenerRTCientifico(pc);
             lisRT = obtenerRTDisponibles(ra);
-            pantalla.mostrarRTDisponibles(lisRT);
+            //ordenarYAgruparRTPorCI()
+            pantalla.cargarGrillaRTDisponibles(lisRT);
+            pantalla.solicitarFechaFinPrevista();
+
         }
 
         private List<RecursoTecnologico> obtenerRTDisponibles(AsignaciónResponsableTecnicoRT ra)
@@ -52,8 +58,9 @@ namespace PPAI.Controlador
             return lisRT;
         }
 
-        public void obtenerUsuarioLogueado()
+        public void obtenerUsuarioLogueado(CentroDeInvestigacion ci)
         {
+            //bool esLogueadoCI = CentroDeInvestigacion.esLogueadoCI(ci);
             this.sesion = Datos.sesion;
             this.sesion.mostrarCientifico(sesion);
         }
@@ -85,6 +92,30 @@ namespace PPAI.Controlador
             pc = Datos.pc;
             return pc;
             
+        }
+
+        public void OrdenarYAgruparRTPorCI(List<string[]> listaDatos)
+        {
+            //listaDatos.Sort((x, y) => x[1].CompareTo(y[1]));
+            //lisRT.Sort((x, y) => x.ObtenerCI().GetNombre().CompareTo(y.ObtenerCI().GetNombre()));
+        }
+
+        public RecursoTecnologico rtSeleccionado(string numero)
+        {
+            for (int i = 0; lisRT.Count > i; i++)
+            {
+                if (lisRT[i].NumeroRT.ToString().Equals(numero))
+                {
+                    rtSelec = lisRT[i];
+                }
+            }
+            
+            return rtSelec;
+        }
+
+        public void fechaFinPrevistaSeleccionada(string fechaFin)
+        {
+            MessageBox.Show(fechaFin);
         }
     }    
 }

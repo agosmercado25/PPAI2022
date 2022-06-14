@@ -78,10 +78,11 @@ namespace PPAI.Entidades
                 }
             }
 
-            //for (int i = 0; i < rt.Count; i++)
-            //{
-            //    rt[i].mostrarDatosRT(rt[i]);
-            //}
+            for (int i = 0; i < rt.Count; i++)
+            {
+                int numero = rt[i].mostrarDatosRT(rt[i]);
+                string nombre = rt[i].TipoRecurso.getNombre(rt[i]);
+            }
 
             return rt;
         }
