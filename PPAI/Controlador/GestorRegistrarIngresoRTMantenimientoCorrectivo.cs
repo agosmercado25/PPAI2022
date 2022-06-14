@@ -22,6 +22,7 @@ namespace PPAI.Controlador
         private PersonalCientifico pc;
         private RecursoTecnologico rtSelec;
         private DateTime fechaFinPrevista;
+        private DateTime timeActual;
         
 
         public GestorRegistrarIngresoRTMantenimientoCorrectivo()
@@ -116,6 +117,11 @@ namespace PPAI.Controlador
         public void fechaFinPrevistaSeleccionada(string fechaFin)
         {
             MessageBox.Show(fechaFin);
+        }
+
+        public DateTime obtenerFechaHora()
+        {
+            return timeActual = DateTime.Now;
         }
     }    
 }
