@@ -26,6 +26,7 @@ namespace PPAI.Controlador
         private string razonMantenimientoIngresado;
         private List<Turno> listaTurnos;
         
+        
 
         public GestorRegistrarIngresoRTMantenimientoCorrectivo()
         {
@@ -135,9 +136,62 @@ namespace PPAI.Controlador
 
         public List<Turno> obtenerTurnosRTCancelables()
         {
+            //List<Turno> listaTurnos = this.rtSelec.Turnos;
+            //for (int i=0; i<listaTurnos.Count; i++)
+            //{
+            //    List<CambioEstadoTurno> listaCambio = listaTurnos[i].CambioEstado;
+            //    for (int j=0; j<listaCambio.Count; j++)
+            //    {
+            //        if (listaCambio[i].FechaHoraDesde == listaCambio[i].FechaHoraHasta)
+            //        {
+            //            MessageBox.Show("desde" + listaCambio[i].FechaHoraDesde);
+            //            MessageBox.Show("Hasta" + listaCambio[i].FechaHoraDesde);
+            //        }
+            //        Estado estados = listaCambio[i].EstadoActual;
+            //        MessageBox.Show(estados.Nombre.ToString());
+            //    }
+            //    MessageBox.Show(listaTurnos.Count.ToString());
+            //}
+
+            
+
             listaTurnos = this.rtSelec.obtenerTurnosCancelablesEnPeriodo(this.rtSelec, fechaFinPrevistaSeleccionada.Day, fechaFinPrevistaSeleccionada.Month);
-            pantalla.cargarGrillaTurnos(listaTurnos);
             return listaTurnos;
+        }
+
+        public void obtenerReservasVigentes()
+        {
+            this.rtSelec.mostrarTurnosReserva(listaTurnos);
+            //pantalla.cargarGrillaTurnos(listaTurnos);
+            //return listaTurnos;
+        }
+
+        public void agruparPorCientifico()
+        {
+
+        }
+
+        public void ingresarRTMantenimientoCorrectivo()
+        {
+            rtSelec.ingresarEnMantenimientoCorrectivo(rtSelec, timeActual, fechaFinPrevistaSeleccionada, razonMantenimientoIngresado);
+            rtSelec.cancelarTurnos(rtSelec, timeActual);
+        }
+
+        public void obtenerEstado()
+        {
+            List<Estado> listaEstado = Datos.conocerEstados();
+            for (int i = 0; i < listaEstado.Count; i++)
+            {
+                bool esAT = listaEstado[i].esAmbitoTurno(listaEstado[i]);
+                bool esCMC = listaEstado[i].esCanceladoMantenimientoCorrectivo(listaEstado[i]);
+                bool esART = listaEstado[i].esAmbitoRT(listaEstado[i]);
+                bool esEnMC = listaEstado[i].esEnMantenimientoCorrectivo(listaEstado[i]);
+            }
+        }
+
+        public void generarMail()
+        {
+
         }
     }    
 }

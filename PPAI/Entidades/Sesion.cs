@@ -77,10 +77,10 @@ namespace PPAI.Entidades
             }
         }
 
-        public Usuario mostrarCientifico2()
-        {
-            return this.usuarioSeleccionado.obtenerPersonal();
-        }
+        //public Usuario mostrarCientifico2()
+        //{
+        //    return this.usuarioSeleccionado.obtenerPersonal();
+        //}
 
 
     }

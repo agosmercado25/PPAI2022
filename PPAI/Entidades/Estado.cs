@@ -67,10 +67,14 @@ namespace PPAI.Entidades
                 return false;
             }
         }
-
-        public bool sCancelable(Estado e)
+        public void sCancelable()
         {
-            if (e.EsCancelable.Equals(true))
+            
+        }
+
+        public bool esReservado(Estado e)
+        {
+            if (e.esReservable.Equals(true))
             {
                 return true;
             }
@@ -78,6 +82,66 @@ namespace PPAI.Entidades
             {
                 return false;
             }
+        }
+
+        public bool esPendienteConfirmacionReserva(Estado e)
+        {
+            if (e.Nombre.Equals("PendienteConfirmacionReserva"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool sCancelable(Estado e)
+        {
+            if (e.EsCancelable.ToString().Equals(true))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool esAmbitoTurno(Estado e)
+        {
+            if (e.Ambito.ToString().Equals("Turno"))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool esCanceladoMantenimientoCorrectivo(Estado e)
+        {
+            if (e.Nombre.ToString().Equals("Cancelado en mantenimiento correctivo"))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool esAmbitoRT(Estado e)
+        {
+            if (e.Ambito.ToString().Equals("Recurso Tecnologico"))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool esEnMantenimientoCorrectivo(Estado e)
+        {
+            if (e.Nombre.ToString().Equals("En mantenimiento correctivo"))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

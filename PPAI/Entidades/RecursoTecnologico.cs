@@ -18,10 +18,11 @@ namespace PPAI.Entidades
         private TipoRecursoTecnológico tipoRecurso;
         private Modelo modelo;
         private List<CambioEstadoRT> cambioEstado;
+        private List<Mantenimiento> mantenimiento;
 
         public int NumeroRT
         {
-            get => numeroRT; set => numeroRT = value; 
+            get => numeroRT; set => numeroRT = value;
         }
 
         public DateTime FechaAlta
@@ -109,11 +110,16 @@ namespace PPAI.Entidades
 
         public List<object> mostrarDatosRT(RecursoTecnologico rt)
         {
-            int num = this.NumeroRT;
+            int num = getNumero(rt);
             List<object> list = this.Modelo.mostrarMarcaYModelo(rt);
             list.Add(this.TipoRecurso.getNombre(rt));
             list.Add(rt);
             return list;
+        }
+
+        public int getNumero(RecursoTecnologico rt)
+        {
+            return rt.NumeroRT;
         }
 
         public List<Turno> obtenerTurnosCancelablesEnPeriodo(RecursoTecnologico rt, int dia, int mes)
@@ -121,13 +127,47 @@ namespace PPAI.Entidades
             List<Turno> turnoList = new List<Turno>();
             for (int i = 0; i < rt.Turnos.Count; i++)
             {
-                bool esT = Turnos[i].esCancelableEnPeriodo(Turnos[i], dia, mes);
-                if (esT)
+                CambioEstadoTurno esT = Turnos[i].esCancelableEnPeriodo(Turnos[i], dia, mes);
+                if (esT != null)
                 {
                     turnoList.Add(Turnos[i]);
                 }
             }
             return turnoList;
+        }
+
+        public List<Turno> mostrarTurnosReserva(List<Turno> turnos)
+        {
+            for (int i = 0; i < turnos.Count; i++)
+            {
+                bool esReser = turnos[i].esConReserva(turnos[i]);
+                if (!esReser)
+                {
+                    turnos.Remove(turnos[i]);
+                }
+            }
+            
+            for (int i = 0; i < turnos.Count; i++)
+            {
+                (DateTime fechaHora, string nombreCientifico, string mailCientifico) = turnos[i].mostrarDatosTurno(turnos[i]);
+            }
+            return turnos;
+        }
+
+        public void ingresarEnMantenimientoCorrectivo(RecursoTecnologico rt, DateTime time, DateTime fechaFinPrev, string motivo)
+        {
+            rt.cambioEstado.Add(new CambioEstadoRT(time, time, new Estado(6, "EnMantenimientoCorrectivo", "Descripcion", "Recurso Tecnologico", false, true)));
+            rt.mantenimiento.Add(new Mantenimiento(time, time, fechaFinPrev, motivo));
+            
+        }
+
+        public void cancelarTurnos(RecursoTecnologico rt, DateTime time)
+        {
+            for (int i = 0; i < rt.turnos.Count; i++)
+            {
+                //turnos[i].CambioEstado.cancelarMantenimientoCorrectivo(cambioEstado);
+                turnos[i].CambioEstado.Add(new CambioEstadoTurno(time, time, new Estado(5, "CanceladoMantenimientoCorrectivo", "Descripcion", "Turno", true, true)));
+            }
         }
     }
 }

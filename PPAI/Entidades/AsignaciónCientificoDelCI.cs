@@ -50,6 +50,18 @@ namespace PPAI.Entidades
             
         }
 
-
+        public (string,string) mostrarDatosCientifico(Turno t)
+        {
+            for (int i = 0; i < turno.Count; i++)
+            {
+                if (turno[i] == t)
+                {
+                    string nom = this.pc.getNombre();
+                    string mail = this.PC.getMail();
+                    return (nom, mail);
+                }
+            }
+            return (null,null);
+        }
     }
 }

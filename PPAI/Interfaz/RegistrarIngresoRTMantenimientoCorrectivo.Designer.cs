@@ -30,25 +30,20 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grillaRTDisponibles = new System.Windows.Forms.DataGridView();
+            this.NumeroRT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoRecurso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txtRazon = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtFechaFinPrevista = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBoxFin = new System.Windows.Forms.GroupBox();
-            this.NumeroRT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoRecurso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnFechaRazon = new System.Windows.Forms.Button();
-            this.grupoTurnos = new System.Windows.Forms.GroupBox();
-            this.grillaTurnos = new System.Windows.Forms.DataGridView();
-            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaRTDisponibles)).BeginInit();
             this.groupBoxFin.SuspendLayout();
-            this.grupoTurnos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grillaTurnos)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -78,6 +73,29 @@
             this.grillaRTDisponibles.Size = new System.Drawing.Size(774, 178);
             this.grillaRTDisponibles.TabIndex = 2;
             this.grillaRTDisponibles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grillaRTDisponibles_CellContentClick);
+            // 
+            // NumeroRT
+            // 
+            this.NumeroRT.DataPropertyName = "NumeroRT";
+            this.NumeroRT.HeaderText = "NumeroRT";
+            this.NumeroRT.Name = "NumeroRT";
+            // 
+            // TipoRecurso
+            // 
+            this.TipoRecurso.DataPropertyName = "TipoRecurso";
+            this.TipoRecurso.HeaderText = "Tipo Recurso";
+            this.TipoRecurso.Name = "TipoRecurso";
+            // 
+            // Modelo
+            // 
+            this.Modelo.DataPropertyName = "Modelo";
+            this.Modelo.HeaderText = "Modelo";
+            this.Modelo.Name = "Modelo";
+            // 
+            // Marca
+            // 
+            this.Marca.HeaderText = "Marca";
+            this.Marca.Name = "Marca";
             // 
             // label1
             // 
@@ -141,29 +159,6 @@
             this.groupBoxFin.TabIndex = 21;
             this.groupBoxFin.TabStop = false;
             // 
-            // NumeroRT
-            // 
-            this.NumeroRT.DataPropertyName = "NumeroRT";
-            this.NumeroRT.HeaderText = "NumeroRT";
-            this.NumeroRT.Name = "NumeroRT";
-            // 
-            // TipoRecurso
-            // 
-            this.TipoRecurso.DataPropertyName = "TipoRecurso";
-            this.TipoRecurso.HeaderText = "Tipo Recurso";
-            this.TipoRecurso.Name = "TipoRecurso";
-            // 
-            // Modelo
-            // 
-            this.Modelo.DataPropertyName = "Modelo";
-            this.Modelo.HeaderText = "Modelo";
-            this.Modelo.Name = "Modelo";
-            // 
-            // Marca
-            // 
-            this.Marca.HeaderText = "Marca";
-            this.Marca.Name = "Marca";
-            // 
             // btnFechaRazon
             // 
             this.btnFechaRazon.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -175,45 +170,12 @@
             this.btnFechaRazon.UseVisualStyleBackColor = true;
             this.btnFechaRazon.Click += new System.EventHandler(this.btnFechaRazon_Click);
             // 
-            // grupoTurnos
-            // 
-            this.grupoTurnos.BackColor = System.Drawing.SystemColors.Control;
-            this.grupoTurnos.Controls.Add(this.grillaTurnos);
-            this.grupoTurnos.Controls.Add(this.label4);
-            this.grupoTurnos.Enabled = false;
-            this.grupoTurnos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grupoTurnos.Location = new System.Drawing.Point(822, 12);
-            this.grupoTurnos.Name = "grupoTurnos";
-            this.grupoTurnos.Size = new System.Drawing.Size(397, 275);
-            this.grupoTurnos.TabIndex = 22;
-            this.grupoTurnos.TabStop = false;
-            this.grupoTurnos.Text = "Turnos";
-            // 
-            // grillaTurnos
-            // 
-            this.grillaTurnos.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.grillaTurnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grillaTurnos.Location = new System.Drawing.Point(12, 82);
-            this.grillaTurnos.Name = "grillaTurnos";
-            this.grillaTurnos.Size = new System.Drawing.Size(368, 178);
-            this.grillaTurnos.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 43);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(114, 25);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Turnos RT";
-            // 
             // RegistrarIngresoRTMantenimientoCorrectivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1231, 464);
-            this.Controls.Add(this.grupoTurnos);
+            this.ClientSize = new System.Drawing.Size(832, 464);
             this.Controls.Add(this.groupBoxFin);
             this.Controls.Add(this.groupBox1);
             this.Name = "RegistrarIngresoRTMantenimientoCorrectivo";
@@ -224,9 +186,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.grillaRTDisponibles)).EndInit();
             this.groupBoxFin.ResumeLayout(false);
             this.groupBoxFin.PerformLayout();
-            this.grupoTurnos.ResumeLayout(false);
-            this.grupoTurnos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grillaTurnos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -246,8 +205,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
         private System.Windows.Forms.Button btnFechaRazon;
-        private System.Windows.Forms.GroupBox grupoTurnos;
-        private System.Windows.Forms.DataGridView grillaTurnos;
-        private System.Windows.Forms.Label label4;
     }
 }

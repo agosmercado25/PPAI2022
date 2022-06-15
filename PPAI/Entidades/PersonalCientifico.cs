@@ -76,5 +76,15 @@ namespace PPAI.Entidades
             this.telefonoCelular = telefonoCelular;
             this.usuario = usuario;
         }
+
+        public string getNombre()
+        {
+            return Nombre;
+        }
+
+        public string getMail()
+        {
+            return CorreoInstitu;
+        }
     }
 }

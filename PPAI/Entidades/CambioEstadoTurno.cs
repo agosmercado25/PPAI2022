@@ -41,7 +41,7 @@ namespace PPAI.Entidades
 
         public bool esActual(CambioEstadoTurno ce)
         {
-            if (ce.FechaHoraHasta.Equals(fechaHoraDesde))
+            if (ce.FechaHoraHasta.Equals(ce.FechaHoraDesde))
             {
                 return true;
             }
@@ -54,6 +54,26 @@ namespace PPAI.Entidades
         public bool esCancelable(CambioEstadoTurno ce)
         {
             return ce.EstadoActual.sCancelable(EstadoActual);
+        }
+
+        public bool esConReserva(CambioEstadoTurno ce)
+        {
+            bool esReserv = ce.EstadoActual.esReservado(estado);
+            bool esPendi = ce.EstadoActual.esPendienteConfirmacionReserva(estado);
+
+            if (esReserv && esPendi)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public void setFechaFin()
+        {
+
         }
     }
 }

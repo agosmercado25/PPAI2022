@@ -37,15 +37,6 @@ namespace PPAI.Interfaz
 
         public bool cargarGrillaRTDisponibles(List<RecursoTecnologico> rts)
         {
-            //List<object> lista = new List<object>();
-            //for (int i = 0; i < rts.Count; i++)
-            //{
-            //    lista.Add(rts[i].NumeroRT);
-            //    lista.Add(rts[i].TipoRecurso);
-            //    lista.Add(rts[i].Modelo);
-            //    MessageBox.Show(lista);
-                
-            //}
             try
             {
                 grillaRTDisponibles.DataSource = rts;
@@ -68,6 +59,7 @@ namespace PPAI.Interfaz
             gestor.rtSeleccionado(numero);
             groupBoxFin.Enabled = true;
             MessageBox.Show("Ingresar fecha fin prevista y motivo de mantenimiento");
+            txtFechaFinPrevista.Focus();
 
         }
 
@@ -84,30 +76,26 @@ namespace PPAI.Interfaz
         public void solicitarFechaFinPrevista()
         {
             MessageBox.Show("Por favor ingrese la fecha");
-
         }
 
         private void btnFechaRazon_Click(object sender, EventArgs e)
         {
-            DateTime fechaFin = DateTime.Parse(txtFechaFinPrevista.Text.Trim());
-            string motivoMantenimiento = txtRazon.Text;
-            gestor.fechaFinPrevista(fechaFin);
-            gestor.razonMantenimiento(motivoMantenimiento);
-            grupoTurnos.Enabled = true;
-            gestor.obtenerTurnosRTCancelables();
-        }
-
-        public void cargarGrillaTurnos(List<Turno> turnos)
-        {
-            try
+            if (txtFechaFinPrevista.Text.Equals("") || txtRazon.Text.Equals(""))
             {
-                grillaTurnos.DataSource = turnos;
+                MessageBox.Show("Ingresar los datos solicitados.");
             }
-            catch (Exception)
+            else
             {
-
-                MessageBox.Show("Error al obtener listado de estados");
+                DateTime fechaFin = DateTime.Parse(txtFechaFinPrevista.Text.Trim());
+                string motivoMantenimiento = txtRazon.Text;
+                gestor.fechaFinPrevista(fechaFin);
+                gestor.razonMantenimiento(motivoMantenimiento);
+                List<Turno> turnos = gestor.obtenerTurnosRTCancelables();
+                TurnosRT ventanaTurnos = new TurnosRT();
+                ventanaTurnos.cargarGrillaTurnos(turnos);
+                ventanaTurnos.Show();
             }
+            
         }
     }
 }

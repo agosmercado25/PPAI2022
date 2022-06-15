@@ -135,6 +135,12 @@
     <Compile Include="Interfaz\RegistrarIngresoRTMantenimientoCorrectivo.Designer.cs">
       <DependentUpon>RegistrarIngresoRTMantenimientoCorrectivo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaz\TurnosRT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaz\TurnosRT.Designer.cs">
+      <DependentUpon>TurnosRT.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Interfaz\Login.resx">
@@ -145,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaz\RegistrarIngresoRTMantenimientoCorrectivo.resx">
       <DependentUpon>RegistrarIngresoRTMantenimientoCorrectivo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaz\TurnosRT.resx">
+      <DependentUpon>TurnosRT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
