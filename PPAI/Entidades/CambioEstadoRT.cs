@@ -56,5 +56,15 @@ namespace PPAI.Entidades
             bool es;
             return es = cambio.EstadoActual.esDisponible(cambio.EstadoActual);
         }
+
+        public void setFechaFin()
+        {
+
+        }
+
+        public void cancelarMantenimientoCorrectivo(CambioEstadoRT e)
+        {
+
+        }
     }
 }

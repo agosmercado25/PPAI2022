@@ -9,10 +9,10 @@ namespace PPAI.AccesoDatos
 {
     public class Datos
     {
-        public static readonly DateTime date1 = new DateTime(2022, 5, 1, 8, 30, 52);
-        public static readonly DateTime date2 = new DateTime(2022, 6, 1, 8, 30, 52);
-        public static readonly DateTime date3 = new DateTime(2022, 6, 10, 8, 30, 52);
-        public static readonly DateTime date4 = new DateTime(2022, 6, 11, 8, 30, 52);
+        public static readonly DateTime date1 = new DateTime(2022, 05, 10, 08, 30, 52);
+        public static readonly DateTime date2 = new DateTime(2022, 06, 01, 08, 30, 52);
+        public static readonly DateTime date3 = new DateTime(2022, 06, 15, 08, 30, 52);
+        public static readonly DateTime date4 = new DateTime(2022, 06, 11, 08, 30, 52);
 
         public static readonly AsignaciónCientificoDelCI asigCienti = new AsignaciónCientificoDelCI(date1, date2, new PersonalCientifico(25, "Mora", "Lopez", 36985214, "usuario1@facultad.com", "usuario1@gmail.com", 351669784, usuario), agregarTurnos());
 
@@ -75,7 +75,7 @@ namespace PPAI.AccesoDatos
 
             return lis;
         }
-      
+
         private static List<CambioEstadoRT> agregarCamEstado()
         {
             List<CambioEstadoRT> list = new List<CambioEstadoRT>();
@@ -94,10 +94,10 @@ namespace PPAI.AccesoDatos
         {
             List<CambioEstadoTurno> list = new List<CambioEstadoTurno>();
 
-            list.Add(new CambioEstadoTurno(date1, date1, new Estado(2, "Cancelable", "Descripcion", "Turno", false, true)));
-            list.Add(new CambioEstadoTurno(date2, date2, new Estado(3, "Reservado", "Descripcion", "Turno", true, false)));
-            list.Add(new CambioEstadoTurno(date3, date3, new Estado(4, "PendienteConfirmacionReserva", "Descripcion", "Turno", false, false)));
-            list.Add(new CambioEstadoTurno(date3, date3, new Estado(5, "CanceladoMantenimientoCorrectivo", "Descripcion", "Turno", false, false)));
+            list.Add(new CambioEstadoTurno(date1, date2, new Estado(2, "Cancelable", "Descripcion", "Turno", false, true)));
+            list.Add(new CambioEstadoTurno(date2, date3, new Estado(3, "Reservado", "Descripcion", "Turno", true, false)));
+            list.Add(new CambioEstadoTurno(date2, date3, new Estado(4, "PendienteConfirmacionReserva", "Descripcion", "Turno", false, false)));
+            list.Add(new CambioEstadoTurno(date4, date4, new Estado(5, "CanceladoMantenimientoCorrectivo", "Descripcion", "Turno", true, true)));
 
             return list;
         }
@@ -140,13 +140,18 @@ namespace PPAI.AccesoDatos
         //public static readonly AsignaciónResponsableTecnicoRT asigRespTecn3 = new AsignaciónResponsableTecnicoRT(date1, date2, agregarRT(), pc2);
         //public static readonly AsignaciónResponsableTecnicoRT asigRespTecn4 = new AsignaciónResponsableTecnicoRT(date1, date2, agregarRT(), pc2);
 
-        //public static readonly Estado estadoD = new Estado(1, "Disponible", "Descripcion", "Recurso Tecnologico", false, false);
-        //public static readonly Estado estadoC = new Estado(2, "Cancelable", "Descripcion", "Turno", false, true);
-        //public static readonly Estado estadoR = new Estado(3, "Reservado", "Descripcion", "Turno", true, false);
-        //public static readonly Estado estadoPen = new Estado(4, "PendienteConfirmacionReserva", "Descripcion", "Turno", false, false);
-        //public static readonly Estado estadoCance = new Estado(5, "CanceladoMantenimientoCorrectivo", "Descripcion", "Turno", false, false);
-        //public static readonly Estado estadoEnMante = new Estado(6, "EnMantenimientoCorrectivo", "Descripcion", "Recurso Tecnologico", false, false);
+        public static List<Estado> conocerEstados()
+        {
+            List<Estado> list = new List<Estado>();
+            list.Add(new Estado(1, "Disponible", "Descripcion", "Recurso Tecnologico", false, false));
+            list.Add(new Estado(2, "Cancelable", "Descripcion", "Turno", false, true));
+            list.Add(new Estado(3, "Reservado", "Descripcion", "Turno", true, false));
+            list.Add(new Estado(4, "PendienteConfirmacionReserva", "Descripcion", "Turno", false, false));
+            list.Add(new Estado(5, "CanceladoMantenimientoCorrectivo", "Descripcion", "Turno", false, false));
+            list.Add(new Estado(6, "EnMantenimientoCorrectivo", "Descripcion", "Recurso Tecnologico", false, false));
 
+            return list;
+        }   
         //public static readonly CambioEstadoRT cambEstRT1 = new CambioEstadoRT(date1, date1, new Estado(1, "Disponible", "Descripcion", "Recurso Tecnologico", false, false));
         //public static readonly CambioEstadoRT cambEstRT2 = new CambioEstadoRT(date2, date2, new Estado(1, "Disponible", "Descripcion", "Recurso Tecnologico", false, false));
         //public static readonly CambioEstadoRT cambEstRT3 = new CambioEstadoRT(date3, date3, new Estado(1, "Disponible", "Descripcion", "Recurso Tecnologico", false, false));

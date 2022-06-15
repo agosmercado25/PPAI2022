@@ -42,14 +42,14 @@ namespace PPAI.Entidades
             this.modelos = modelos;
         }
 
-        public string mostrarNombre(RecursoTecnologico rt)
+        public Marca mostrarNombre(Marca marca, Modelo modelo)
         {
-            Marca marca = Datos.marca1;
+            
             for (int i = 0; i < marca.Modelos.Count; i++)
             {
-                if (marca.Modelos[i].Nombre.Equals(rt.Modelo.ToString()))
+                if (marca.Modelos[i].Nombre.ToString().Equals(modelo.Nombre.ToString()))
                 {
-                    return marca.Modelos[i].Nombre;
+                    return this;
                 }
             }
 

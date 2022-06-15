@@ -34,11 +34,14 @@ namespace PPAI.Entidades
             this.nombre = nombre;
         }
 
-        public string mostrarMarcaYModelo(RecursoTecnologico rt)
+        public List<object> mostrarMarcaYModelo(RecursoTecnologico rt)
         {
             Marca marca = Datos.marca1;
-            string marcaP = marca.mostrarNombre(rt);
-            return Nombre;
+            Marca marcaM = marca.mostrarNombre(marca, this);
+            List<object> list = new List<object>();
+            list.Add(marcaM);
+            list.Add(this);
+            return list;
         }
     }
 }
