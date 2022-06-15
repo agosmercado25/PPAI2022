@@ -107,11 +107,27 @@ namespace PPAI.Entidades
             return false;
         }
 
-        public int mostrarDatosRT(RecursoTecnologico rt)
+        public List<object> mostrarDatosRT(RecursoTecnologico rt)
         {
-            string marca;
-            //modelo, marca = mostrarMarcaYModelo(rt);
-            return rt.NumeroRT;
+            int num = this.NumeroRT;
+            List<object> list = this.Modelo.mostrarMarcaYModelo(rt);
+            list.Add(this.TipoRecurso.getNombre(rt));
+            list.Add(rt);
+            return list;
+        }
+
+        public List<Turno> obtenerTurnosCancelablesEnPeriodo(RecursoTecnologico rt, int dia, int mes)
+        {
+            List<Turno> turnoList = new List<Turno>();
+            for (int i = 0; i < rt.Turnos.Count; i++)
+            {
+                bool esT = Turnos[i].esCancelableEnPeriodo(Turnos[i], dia, mes);
+                if (esT)
+                {
+                    turnoList.Add(Turnos[i]);
+                }
+            }
+            return turnoList;
         }
     }
 }

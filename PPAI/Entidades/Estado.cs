@@ -67,5 +67,17 @@ namespace PPAI.Entidades
                 return false;
             }
         }
+
+        public bool sCancelable(Estado e)
+        {
+            if (e.EsCancelable.Equals(true))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

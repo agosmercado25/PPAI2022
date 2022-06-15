@@ -9,10 +9,10 @@ namespace PPAI.AccesoDatos
 {
     public class Datos
     {
-        public static readonly DateTime date1 = new DateTime(2022, 5, 1, 8, 30, 52);
-        public static readonly DateTime date2 = new DateTime(2022, 6, 1, 8, 30, 52);
-        public static readonly DateTime date3 = new DateTime(2022, 6, 10, 8, 30, 52);
-        public static readonly DateTime date4 = new DateTime(2022, 6, 11, 8, 30, 52);
+        public static readonly DateTime date1 = new DateTime(2022, 05, 10, 08, 30, 52);
+        public static readonly DateTime date2 = new DateTime(2022, 06, 01, 08, 30, 52);
+        public static readonly DateTime date3 = new DateTime(2022, 06, 15, 08, 30, 52);
+        public static readonly DateTime date4 = new DateTime(2022, 06, 11, 08, 30, 52);
 
         public static readonly AsignaciónCientificoDelCI asigCienti = new AsignaciónCientificoDelCI(date1, date2, new PersonalCientifico(25, "Mora", "Lopez", 36985214, "usuario1@facultad.com", "usuario1@gmail.com", 351669784, usuario), agregarTurnos());
 

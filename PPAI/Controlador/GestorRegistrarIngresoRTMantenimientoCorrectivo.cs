@@ -21,8 +21,10 @@ namespace PPAI.Controlador
         private AsignaciónResponsableTecnicoRT ra;
         private PersonalCientifico pc;
         private RecursoTecnologico rtSelec;
-        private DateTime fechaFinPrevista;
+        private DateTime fechaFinPrevistaSeleccionada;
         private DateTime timeActual;
+        private string razonMantenimientoIngresado;
+        private List<Turno> listaTurnos;
         
 
         public GestorRegistrarIngresoRTMantenimientoCorrectivo()
@@ -48,9 +50,12 @@ namespace PPAI.Controlador
             ra = obtenerRTCientifico(pc);
             lisRT = obtenerRTDisponibles(ra);
             //ordenarYAgruparRTPorCI()
-            pantalla.cargarGrillaRTDisponibles(lisRT);
-            pantalla.solicitarFechaFinPrevista();
-
+            bool mostrar = pantalla.cargarGrillaRTDisponibles(lisRT);
+            if (mostrar)
+            {
+                //listaTurnos = obtenerTurnosRTCancelables();
+                //pantalla.cargarGrillaTurnos(listaTurnos);
+            }
         }
 
         private List<RecursoTecnologico> obtenerRTDisponibles(AsignaciónResponsableTecnicoRT ra)
@@ -68,7 +73,7 @@ namespace PPAI.Controlador
 
         public AsignaciónResponsableTecnicoRT obtenerRTCientifico(PersonalCientifico pc)
         {
-            MessageBox.Show(pc.ToString());
+            //MessageBox.Show(pc.ToString());
             asigResTecRT = Datos.crearAsignaciones();
             //MessageBox.Show(asigResTecRT.ToString());
             for (int i = 0; i < asigResTecRT.Count; i++)
@@ -110,18 +115,29 @@ namespace PPAI.Controlador
                     rtSelec = lisRT[i];
                 }
             }
-            
             return rtSelec;
         }
 
-        public void fechaFinPrevistaSeleccionada(string fechaFin)
+        public void fechaFinPrevista(DateTime fechaFin)
         {
-            MessageBox.Show(fechaFin);
+            this.fechaFinPrevistaSeleccionada = fechaFin;
+        }
+
+        public void razonMantenimiento(string razon)
+        {
+            this.razonMantenimientoIngresado = razon;
         }
 
         public DateTime obtenerFechaHora()
         {
             return timeActual = DateTime.Now;
+        }
+
+        public List<Turno> obtenerTurnosRTCancelables()
+        {
+            listaTurnos = this.rtSelec.obtenerTurnosCancelablesEnPeriodo(this.rtSelec, fechaFinPrevistaSeleccionada.Day, fechaFinPrevistaSeleccionada.Month);
+            pantalla.cargarGrillaTurnos(listaTurnos);
+            return listaTurnos;
         }
     }    
 }

@@ -26,7 +26,7 @@ namespace PPAI.Interfaz
         {
             gestor = new GestorRegistrarIngresoRTMantenimientoCorrectivo(this);
             gestor.registrarIngresoRTMantenimientoCorrectivo();
-            MessageBox.Show("Por favor seleccionar un recurso tecnologico");
+            
 
         }
 
@@ -35,21 +35,29 @@ namespace PPAI.Interfaz
             
         }
 
-        public void cargarGrillaRTDisponibles(List<RecursoTecnologico> rt)
+        public bool cargarGrillaRTDisponibles(List<RecursoTecnologico> rts)
         {
-            
+            //List<object> lista = new List<object>();
+            //for (int i = 0; i < rts.Count; i++)
+            //{
+            //    lista.Add(rts[i].NumeroRT);
+            //    lista.Add(rts[i].TipoRecurso);
+            //    lista.Add(rts[i].Modelo);
+            //    MessageBox.Show(lista);
+                
+            //}
             try
             {
-                grillaRTDisponibles.DataSource = rt;
-                
+                grillaRTDisponibles.DataSource = rts;
+                this.Show();
+                MessageBox.Show("Por favor seleccionar un recurso tecnologico");
+                return true;
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Error al obtener listado de estados");
-            }
-
-            
+                return false;
+            }            
         }
 
         private void grillaRTDisponibles_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -59,7 +67,7 @@ namespace PPAI.Interfaz
             string numero = filaseleccionada.Cells["numeroRT"].Value.ToString();
             gestor.rtSeleccionado(numero);
             groupBoxFin.Enabled = true;
-
+            MessageBox.Show("Ingresar fecha fin prevista y motivo de mantenimiento");
 
         }
 
@@ -77,6 +85,29 @@ namespace PPAI.Interfaz
         {
             MessageBox.Show("Por favor ingrese la fecha");
 
+        }
+
+        private void btnFechaRazon_Click(object sender, EventArgs e)
+        {
+            DateTime fechaFin = DateTime.Parse(txtFechaFinPrevista.Text.Trim());
+            string motivoMantenimiento = txtRazon.Text;
+            gestor.fechaFinPrevista(fechaFin);
+            gestor.razonMantenimiento(motivoMantenimiento);
+            grupoTurnos.Enabled = true;
+            gestor.obtenerTurnosRTCancelables();
+        }
+
+        public void cargarGrillaTurnos(List<Turno> turnos)
+        {
+            try
+            {
+                grillaTurnos.DataSource = turnos;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Error al obtener listado de estados");
+            }
         }
     }
 }

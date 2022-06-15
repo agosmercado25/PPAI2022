@@ -12,6 +12,7 @@ namespace PPAI.Entidades
         private DateTime fechaHasta;
         private List<RecursoTecnologico> rt;
         private PersonalCientifico personal;
+        List<string> dato;
 
         public DateTime FechaDesde
         {
@@ -68,6 +69,7 @@ namespace PPAI.Entidades
         public List<RecursoTecnologico> obtenerRTDisponibles(AsignaciónResponsableTecnicoRT ra)
         {
             rt = ra.RT;
+            List<object> datos = new List<object>();
             //string tipo, modelo, marca;
             for (int i = 0; i < rt.Count; i++)
             {
@@ -80,10 +82,10 @@ namespace PPAI.Entidades
 
             for (int i = 0; i < rt.Count; i++)
             {
-                int numero = rt[i].mostrarDatosRT(rt[i]);
-                string nombre = rt[i].TipoRecurso.getNombre(rt[i]);
+                
+                datos.AddRange(rt[i].mostrarDatosRT(rt[i]));
+                
             }
-
             return rt;
         }
 

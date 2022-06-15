@@ -38,5 +38,22 @@ namespace PPAI.Entidades
             this.estado = estado;
             this.fechaHoraDesde = fechaHoraDesde;
         }
+
+        public bool esActual(CambioEstadoTurno ce)
+        {
+            if (ce.FechaHoraHasta.Equals(fechaHoraDesde))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool esCancelable(CambioEstadoTurno ce)
+        {
+            return ce.EstadoActual.sCancelable(EstadoActual);
+        }
     }
 }

@@ -60,5 +60,38 @@ namespace PPAI.Entidades
             
             
         }
+
+        public bool esCancelableEnPeriodo(Turno turno, int dia, int mes)
+        {
+            bool es = esDePeriodo(turno, dia, mes);
+            if (es)
+            {
+                for (int i = 0; i < cambioEstado.Count; i++)
+                {
+                    bool esAc = cambioEstado[i].esActual(cambioEstado[i]);
+                    if (esAc)
+                    {
+                        bool esCan = cambioEstado[i].esCancelable(cambioEstado[i]);
+                        if (esCan)
+                        {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                return false;
+            }
+            return false;
+        }
+
+        private bool esDePeriodo(Turno turno, int dia, int mes)
+        {
+            if (turno.fechaHoraFin.Month <= mes && turno.fechaHoraFin.Day <= dia)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

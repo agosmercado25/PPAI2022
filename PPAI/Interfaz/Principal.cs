@@ -29,8 +29,9 @@ namespace PPAI.Interfaz
         private void habilitarPantalla()
         {
             RegistrarIngresoRTMantenimientoCorrectivo ventana = new RegistrarIngresoRTMantenimientoCorrectivo();
-            ventana.Show();
             this.Hide();
+            ventana.Show();
+            
         }
 
         private void Principal_Load(object sender, EventArgs e)
