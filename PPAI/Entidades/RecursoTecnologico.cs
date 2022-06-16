@@ -125,52 +125,52 @@ namespace PPAI.Entidades
             return rt.NumeroRT;
         }
 
-        public List<Turno> obtenerTurnosCancelablesEnPeriodo(RecursoTecnologico rt, int dia, int mes)
+        public List<Turno> obtenerTurnosCancelablesEnPeriodo(List<Turno> turnos, int dia, int mes)
         {
-            List<Turno> turnoList = new List<Turno>();
-            for (int i = 0; i < rt.Turnos.Count; i++)
+            //List<Turno> turnosList = new List<Turno>();
+
+            foreach (Turno turno in this.turnos)
             {
-                CambioEstadoTurno esT = Turnos[i].esCancelableEnPeriodo(Turnos[i], dia, mes);
-                if (esT != null)
+                if (turno.esCancelableEnPeriodo(dia, mes) == false)
                 {
-                    cambioEstadoTurno.Add(esT);
-                    turnoList.Add(Turnos[i]);
+                    turnos.Remove(turno);
                 }
             }
-            return turnoList;
+
+            return turnos;
          }
 
         public List<Turno> mostrarTurnosReserva(List<Turno> turnos)
         {
-            for (int i = 0; i < turnos.Count; i++)
+
+            foreach (Turno turno in this.turnos)
             {
-                bool esReser = turnos[i].esConReserva(turnos[i]);
-                if (!esReser)
+                if (turno.esConReserva() == false)
                 {
-                    turnos.Remove(turnos[i]);
+                    this.turnos.Remove(turno);
                 }
             }
-            
-            for (int i = 0; i < turnos.Count; i++)
+
+            foreach (Turno turno in this.turnos)
             {
-                (DateTime fechaHora, string nombreCientifico, string mailCientifico) = turnos[i].mostrarDatosTurno(turnos[i]);
+                turno.mostrarDatosTurno();
             }
-            return turnos;
+            return this.turnos;
         }
 
-        public void ingresarEnMantenimientoCorrectivo(RecursoTecnologico rt, DateTime time, DateTime fechaFinPrev, string motivo)
+        public void ingresarEnMantenimientoCorrectivo(DateTime time, DateTime fechaFinPrev, string motivo, Estado estadoRT)
         {
-            rt.cambioEstado.Add(new CambioEstadoRT(time, time, new Estado(6, "EnMantenimientoCorrectivo", "Descripcion", "Recurso Tecnologico", false, true)));
-            rt.mantenimiento.Add(new Mantenimiento(time, time, fechaFinPrev, motivo));
-            
+            this.cambioEstadoActual.setFechaFin(time);
+            this.cambioEstado.Add(new CambioEstadoRT(time, null, estadoRT));
+            List<Mantenimiento> mantenimiento = new List<Mantenimiento>();
+            mantenimiento.Add(new Mantenimiento(null, time, fechaFinPrev, motivo));   
         }
 
-        public void cancelarTurnos(RecursoTecnologico rt, DateTime time)
+        public void cancelarTurnos(DateTime time, Estado estadoRT)
         {
-            for (int i = 0; i < rt.turnos.Count; i++)
+            foreach(Turno turno in this.turnos)
             {
-                //turnos[i].CambioEstado.cancelarMantenimientoCorrectivo(cambioEstado);
-                turnos[i].CambioEstado.Add(new CambioEstadoTurno(time, time, new Estado(5, "CanceladoMantenimientoCorrectivo", "Descripcion", "Turno", true, true)));
+                turno.setFechaFin(time, estadoRT);
             }
         }
     }

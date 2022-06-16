@@ -28,8 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrarIngresoRTMantenimientoCorrectivo));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grillaRTDisponibles = new System.Windows.Forms.DataGridView();
+            this.FechaAlta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Marc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Imagenes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Periodicidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fraccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Duracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txtRazon = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -37,14 +52,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBoxFin = new System.Windows.Forms.GroupBox();
             this.btnFechaRazon = new System.Windows.Forms.Button();
-            this.NumeroRT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaAlta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Imagenes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Periodicidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fraccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Duracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoRecurso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEnviarMail = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaRTDisponibles)).BeginInit();
             this.groupBoxFin.SuspendLayout();
@@ -58,7 +68,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(804, 275);
+            this.groupBox1.Size = new System.Drawing.Size(646, 291);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Recursos Tecnológicos";
@@ -66,21 +76,101 @@
             // grillaRTDisponibles
             // 
             this.grillaRTDisponibles.BackgroundColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grillaRTDisponibles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.grillaRTDisponibles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaRTDisponibles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.NumeroRT,
             this.FechaAlta,
+            this.Num,
+            this.Tipo,
+            this.Marc,
+            this.Modelo,
             this.Imagenes,
             this.Periodicidad,
             this.Fraccion,
-            this.Duracion,
-            this.TipoRecurso,
-            this.Modelo});
+            this.Duracion});
             this.grillaRTDisponibles.Location = new System.Drawing.Point(12, 82);
             this.grillaRTDisponibles.Name = "grillaRTDisponibles";
-            this.grillaRTDisponibles.Size = new System.Drawing.Size(774, 178);
+            this.grillaRTDisponibles.RowTemplate.Height = 26;
+            this.grillaRTDisponibles.Size = new System.Drawing.Size(620, 203);
             this.grillaRTDisponibles.TabIndex = 2;
             this.grillaRTDisponibles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grillaRTDisponibles_CellContentClick);
+            // 
+            // FechaAlta
+            // 
+            this.FechaAlta.DataPropertyName = "FechaAlta";
+            this.FechaAlta.HeaderText = "FechaAlta";
+            this.FechaAlta.Name = "FechaAlta";
+            this.FechaAlta.Visible = false;
+            // 
+            // Num
+            // 
+            this.Num.DataPropertyName = "Numero";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Num.DefaultCellStyle = dataGridViewCellStyle7;
+            this.Num.HeaderText = "Numero";
+            this.Num.Name = "Num";
+            // 
+            // Tipo
+            // 
+            this.Tipo.DataPropertyName = "Tipo";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Tipo.DefaultCellStyle = dataGridViewCellStyle8;
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.Width = 150;
+            // 
+            // Marc
+            // 
+            this.Marc.DataPropertyName = "Marca";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Marc.DefaultCellStyle = dataGridViewCellStyle9;
+            this.Marc.HeaderText = "Marca";
+            this.Marc.Name = "Marc";
+            this.Marc.Width = 150;
+            // 
+            // Modelo
+            // 
+            this.Modelo.DataPropertyName = "Modelo";
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Modelo.DefaultCellStyle = dataGridViewCellStyle10;
+            this.Modelo.HeaderText = "Modelo";
+            this.Modelo.Name = "Modelo";
+            this.Modelo.Width = 150;
+            // 
+            // Imagenes
+            // 
+            this.Imagenes.DataPropertyName = "Imagenes";
+            this.Imagenes.HeaderText = "Imagenes";
+            this.Imagenes.Name = "Imagenes";
+            this.Imagenes.Visible = false;
+            // 
+            // Periodicidad
+            // 
+            this.Periodicidad.DataPropertyName = "Periodicidad";
+            this.Periodicidad.HeaderText = "Periodicidad";
+            this.Periodicidad.Name = "Periodicidad";
+            this.Periodicidad.Visible = false;
+            // 
+            // Fraccion
+            // 
+            this.Fraccion.DataPropertyName = "FraccionHorarioTurno";
+            this.Fraccion.HeaderText = "Fraccion";
+            this.Fraccion.Name = "Fraccion";
+            this.Fraccion.Visible = false;
+            // 
+            // Duracion
+            // 
+            this.Duracion.DataPropertyName = "Duracion";
+            this.Duracion.HeaderText = "Duracion";
+            this.Duracion.Name = "Duracion";
+            this.Duracion.Visible = false;
             // 
             // label1
             // 
@@ -95,7 +185,7 @@
             // 
             this.txtRazon.Location = new System.Drawing.Point(225, 64);
             this.txtRazon.Name = "txtRazon";
-            this.txtRazon.Size = new System.Drawing.Size(561, 30);
+            this.txtRazon.Size = new System.Drawing.Size(407, 30);
             this.txtRazon.TabIndex = 20;
             // 
             // label3
@@ -138,16 +228,16 @@
             this.groupBoxFin.Controls.Add(this.txtFechaFinPrevista);
             this.groupBoxFin.Enabled = false;
             this.groupBoxFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxFin.Location = new System.Drawing.Point(12, 293);
+            this.groupBoxFin.Location = new System.Drawing.Point(12, 309);
             this.groupBoxFin.Name = "groupBoxFin";
-            this.groupBoxFin.Size = new System.Drawing.Size(804, 156);
+            this.groupBoxFin.Size = new System.Drawing.Size(646, 156);
             this.groupBoxFin.TabIndex = 21;
             this.groupBoxFin.TabStop = false;
             // 
             // btnFechaRazon
             // 
             this.btnFechaRazon.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFechaRazon.Location = new System.Drawing.Point(666, 118);
+            this.btnFechaRazon.Location = new System.Drawing.Point(512, 118);
             this.btnFechaRazon.Name = "btnFechaRazon";
             this.btnFechaRazon.Size = new System.Drawing.Size(120, 32);
             this.btnFechaRazon.TabIndex = 21;
@@ -155,68 +245,54 @@
             this.btnFechaRazon.UseVisualStyleBackColor = true;
             this.btnFechaRazon.Click += new System.EventHandler(this.btnFechaRazon_Click);
             // 
-            // NumeroRT
+            // btnEnviarMail
             // 
-            this.NumeroRT.DataPropertyName = "NumeroRT";
-            this.NumeroRT.HeaderText = "NumeroRT";
-            this.NumeroRT.Name = "NumeroRT";
+            this.btnEnviarMail.Enabled = false;
+            this.btnEnviarMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEnviarMail.Location = new System.Drawing.Point(524, 471);
+            this.btnEnviarMail.Name = "btnEnviarMail";
+            this.btnEnviarMail.Size = new System.Drawing.Size(120, 39);
+            this.btnEnviarMail.TabIndex = 22;
+            this.btnEnviarMail.Text = "Aceptar mantenimiento";
+            this.btnEnviarMail.UseVisualStyleBackColor = true;
+            this.btnEnviarMail.Click += new System.EventHandler(this.btnEnviarMail_Click);
             // 
-            // FechaAlta
+            // btnCancelar
             // 
-            this.FechaAlta.DataPropertyName = "FechaAlta";
-            this.FechaAlta.HeaderText = "FechaAlta";
-            this.FechaAlta.Name = "FechaAlta";
-            this.FechaAlta.Visible = false;
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.Location = new System.Drawing.Point(398, 471);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(120, 39);
+            this.btnCancelar.TabIndex = 23;
+            this.btnCancelar.Text = "Cancelar mantenimiento";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // Imagenes
+            // btnVolver
             // 
-            this.Imagenes.DataPropertyName = "Imagenes";
-            this.Imagenes.HeaderText = "Imagenes";
-            this.Imagenes.Name = "Imagenes";
-            this.Imagenes.Visible = false;
-            // 
-            // Periodicidad
-            // 
-            this.Periodicidad.DataPropertyName = "Periodicidad";
-            this.Periodicidad.HeaderText = "Periodicidad";
-            this.Periodicidad.Name = "Periodicidad";
-            this.Periodicidad.Visible = false;
-            // 
-            // Fraccion
-            // 
-            this.Fraccion.DataPropertyName = "FraccionHorarioTurno";
-            this.Fraccion.HeaderText = "Fraccion";
-            this.Fraccion.Name = "Fraccion";
-            this.Fraccion.Visible = false;
-            // 
-            // Duracion
-            // 
-            this.Duracion.DataPropertyName = "Duracion";
-            this.Duracion.HeaderText = "Duracion";
-            this.Duracion.Name = "Duracion";
-            this.Duracion.Visible = false;
-            // 
-            // TipoRecurso
-            // 
-            this.TipoRecurso.DataPropertyName = "TipoRecurso";
-            this.TipoRecurso.HeaderText = "Tipo Recurso";
-            this.TipoRecurso.Name = "TipoRecurso";
-            // 
-            // Modelo
-            // 
-            this.Modelo.DataPropertyName = "Modelo";
-            this.Modelo.HeaderText = "Modelo";
-            this.Modelo.Name = "Modelo";
+            this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolver.Location = new System.Drawing.Point(12, 471);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(120, 39);
+            this.btnVolver.TabIndex = 24;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // RegistrarIngresoRTMantenimientoCorrectivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(832, 464);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(669, 522);
+            this.Controls.Add(this.btnVolver);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnEnviarMail);
             this.Controls.Add(this.groupBoxFin);
             this.Controls.Add(this.groupBox1);
             this.Name = "RegistrarIngresoRTMantenimientoCorrectivo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ingreso a Mantenimiento Correctivo";
             this.Load += new System.EventHandler(this.RegistrarIngresoRTMantenimientoCorrectivo_Load);
             this.groupBox1.ResumeLayout(false);
@@ -239,13 +315,17 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBoxFin;
         private System.Windows.Forms.Button btnFechaRazon;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NumeroRT;
+        private System.Windows.Forms.Button btnEnviarMail;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaAlta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Num;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Marc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Imagenes;
         private System.Windows.Forms.DataGridViewTextBoxColumn Periodicidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fraccion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Duracion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TipoRecurso;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
     }
 }

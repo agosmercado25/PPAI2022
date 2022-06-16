@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PPAI.AccesoDatos;
 
 namespace PPAI.Entidades
 {
@@ -15,7 +16,8 @@ namespace PPAI.Entidades
         private DateTime fechaHoraFin;
         private List<CambioEstadoTurno> cambioEstado;
         private AsignaciónCientificoDelCI asignacion;
-        private CambioEstadoTurno esActu;
+
+        private CambioEstadoTurno ultimo;
 
         public int Id
         {
@@ -69,28 +71,26 @@ namespace PPAI.Entidades
             
         }
 
-        public CambioEstadoTurno esCancelableEnPeriodo(Turno turno, int dia, int mes)
+        public bool esCancelableEnPeriodo(int dia, int mes)
         {
-            bool es = esDePeriodo(turno, dia, mes);
+            bool es = esDePeriodo(this, dia, mes);
             if (es)
             {
-                for (int i = 0; i < turno.CambioEstado.Count; i++)
+                foreach (CambioEstadoTurno cambio in cambioEstado)
                 {
-                    bool esAc = CambioEstado[i].esActual(cambioEstado[i]);
-                    if (esAc)
+                    if (cambio.esActual())
                     {
-                        //this.esActu = CambioEstado[i];
-                        bool esCan = cambioEstado[i].esCancelable(cambioEstado[i]);
-                        if (esCan)
-                        {
-                            return cambioEstado[i];
-                        }
+                        this.ultimo = cambio;                       
                     }
-                    return null;
                 }
-                return null;
+
+                if (ultimo.esCancelable())
+                {
+                    return true;
+                }
+                return false;
             }
-            return null;
+            return false;
         }
 
         private bool esDePeriodo(Turno turno, int dia, int mes)
@@ -103,24 +103,20 @@ namespace PPAI.Entidades
             return false;
         }
 
-        public bool esConReserva(Turno turno)
+        public bool esConReserva()
         {
-            for (int i = 0; i < turno.CambioEstado.Count; i++)
+            if (ultimo.esConReserva())
             {
-                bool esReser = CambioEstado[i].esConReserva(CambioEstado[i]);
-                if (esReser)
-                {
-                    return true;
-                }
+                return true;
             }
             return false;
         }
 
-        public (DateTime, string, string) mostrarDatosTurno(Turno turno)
+        public void mostrarDatosTurno()
         {
-            DateTime fechaHora = getFechaHora(turno);
-            (string nom, string mail)  = obtenerCientifico(turno);
-            return (fechaHora, nom, mail);
+            DateTime fechaHora = getFechaHora(this);
+            obtenerCientifico();
+            //return (fechaHora, nom, mail);
         }
 
         public DateTime getFechaHora(Turno t)
@@ -128,10 +124,17 @@ namespace PPAI.Entidades
             return t.FechaHoraFin;
         }
 
-        public (string, string) obtenerCientifico(Turno t)
+        public (string, string) obtenerCientifico()
         {
-            (string nom, string mail) = t.AsignacionCientifico.mostrarDatosCientifico(t);
+            asignacion = Datos.asigCienti;
+            (string nom, string mail) = this.AsignacionCientifico.mostrarDatosCientifico(this);
             return (nom, mail);
+        }
+
+        public void setFechaFin(DateTime time, Estado estado)
+        {
+            ultimo.FechaHoraHasta = time;
+            this.CambioEstado.Add(new CambioEstadoTurno(time, null, estado));
         }
     }
 }

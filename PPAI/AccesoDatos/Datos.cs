@@ -18,7 +18,7 @@ namespace PPAI.AccesoDatos
 
         public static readonly Mantenimiento mantenimiento = new Mantenimiento();
 
-        public static readonly Marca marca1 = new Marca(1, "Marca 1", agregarModelo());
+        public static readonly Marca marca1 = new Marca(1, "SuperSu", agregarModelo());
 
         public static readonly PersonalCientifico pc = new PersonalCientifico(25, "Mora", "Lopez", 36985214, "usuario1@facultad.com", "usuario1@gmail.com", 351669784, usuario);
 
@@ -32,8 +32,8 @@ namespace PPAI.AccesoDatos
         public static List<AsignaciónResponsableTecnicoRT> crearAsignaciones()
         {
             List<AsignaciónResponsableTecnicoRT> asigna = new List<AsignaciónResponsableTecnicoRT>();
-            asigna.Add(new AsignaciónResponsableTecnicoRT(date1, date2, agregarRT(), new PersonalCientifico(25, "Mora", "Lopez", 36985214, "usuario1@facultad.com", "usuario1@gmail.com", 351669784, usuario)));
-            asigna.Add(new AsignaciónResponsableTecnicoRT(date1, date1, agregarRT(), new PersonalCientifico(25, "Mora", "Lopez", 36985214, "usuario1@facultad.com", "usuario1@gmail.com", 351669784, usuario)));
+            asigna.Add(new AsignaciónResponsableTecnicoRT(date1, null, agregarRT(), new PersonalCientifico(25, "Julian", "Lopez", 36985214, "usuario1@facultad.com", "usuario1@gmail.com", 351669784, usuario)));
+            asigna.Add(new AsignaciónResponsableTecnicoRT(date1, null, agregarRT(), new PersonalCientifico(25, "Julian", "Lopez", 36985214, "usuario1@facultad.com", "usuario1@gmail.com", 351669784, usuario)));
             asigna.Add(new AsignaciónResponsableTecnicoRT(date1, date2, agregarRT(), new PersonalCientifico(121, "Mush", "Lopez", 14785236, "usuario2@facultad.com", "usuario2@gmail.com", 351688695, usuario2)));
             asigna.Add(new AsignaciónResponsableTecnicoRT(date1, date2, agregarRT(), new PersonalCientifico(121, "Mush", "Lopez", 14785236, "usuario2@facultad.com", "usuario2@gmail.com", 351688695, usuario2)));
 
@@ -44,11 +44,11 @@ namespace PPAI.AccesoDatos
         {
             List<RecursoTecnologico> list = new List<RecursoTecnologico>();
 
-            list.Add(new RecursoTecnologico(1, date1, "imagen", 10, 20, 5, agregarTurnos(), new TipoRecursoTecnológico(1, "Tipo1", "Tipo1"), new Modelo(1, "Modelo 1"), agregarCamEstado()));
-            list.Add(new RecursoTecnologico(2, date1, "imagen", 10, 20, 5, agregarTurnos(), new TipoRecursoTecnológico(2, "Tipo2", "Tipo2"), new Modelo(2, "Modelo 2"), agregarCamEstado()));
-            list.Add(new RecursoTecnologico(3, date1, "imagen", 10, 20, 5, agregarTurnos(), new TipoRecursoTecnológico(3, "Tipo3", "Tipo3"), new Modelo(3, "Modelo 3"), agregarCamEstado()));
-            list.Add(new RecursoTecnologico(4, date1, "imagen", 10, 20, 5, agregarTurnos(), new TipoRecursoTecnológico(1, "Tipo1", "Tipo1"), new Modelo(1, "Modelo 1"), agregarCamEstado()));
-            list.Add(new RecursoTecnologico(5, date1, "imagen", 10, 20, 5, agregarTurnos(), new TipoRecursoTecnológico(2, "Tipo2", "Tipo2"), new Modelo(2, "Modelo 2"), agregarCamEstado()));
+            list.Add(new RecursoTecnologico(1, date1, "imagen", 10, 20, 5, agregarTurnos(), new TipoRecursoTecnológico(1, "Balanza", "Tipo1"), new Modelo(1, "Systel"), agregarCamEstado()));
+            list.Add(new RecursoTecnologico(2, date1, "imagen", 10, 20, 5, agregarTurnos(), new TipoRecursoTecnológico(2, "Telescopio", "Tipo2"), new Modelo(2, "Celestron"), agregarCamEstado()));
+            list.Add(new RecursoTecnologico(3, date1, "imagen", 10, 20, 5, agregarTurnos(), new TipoRecursoTecnológico(3, "Computadora", "Tipo3"), new Modelo(3, "Intel"), agregarCamEstado()));
+            list.Add(new RecursoTecnologico(4, date1, "imagen", 10, 20, 5, agregarTurnos(), new TipoRecursoTecnológico(1, "Libros", "Tipo1"), new Modelo(1, "Salamandra"), agregarCamEstado()));
+            list.Add(new RecursoTecnologico(5, date1, "imagen", 10, 20, 5, agregarTurnos(), new TipoRecursoTecnológico(2, "Osciloscopio", "Tipo2"), new Modelo(2, "Ya-xun"), agregarCamEstado()));
             return list;
         }
 
@@ -56,9 +56,9 @@ namespace PPAI.AccesoDatos
         {
             List<Turno> turnos = new List<Turno>();
 
-            turnos.Add(new Turno(1, date1, "Lunes", date2, date3, agregarCambioEstado()));
+            turnos.Add(new Turno(1, date1, "Lunes", date2, date4, agregarCambioEstado()));
             turnos.Add(new Turno(2, date1, "Martes", date2, date3, agregarCambioEstado()));
-            turnos.Add(new Turno(3, date1, "Miercoles", date2, date3, agregarCambioEstado()));
+            turnos.Add(new Turno(3, date1, "Miercoles", date2, date4, agregarCambioEstado()));
             turnos.Add(new Turno(4, date1, "Viernes", date2, date3, agregarCambioEstado()));
             return turnos;
         }
@@ -67,11 +67,11 @@ namespace PPAI.AccesoDatos
         {
             List<Modelo> lis = new List<Modelo>();
 
-            lis.Add(new Modelo(1, "Modelo 1"));
-            lis.Add(new Modelo(2, "Modelo 2"));
-            lis.Add(new Modelo(3, "Modelo 3"));
-            lis.Add(new Modelo(4, "Modelo 4"));
-            lis.Add(new Modelo(5, "Modelo 5"));
+            lis.Add(new Modelo(1, "Systel"));
+            lis.Add(new Modelo(2, "Celestron"));
+            lis.Add(new Modelo(3, "Intel"));
+            lis.Add(new Modelo(4, "Salamandra"));
+            lis.Add(new Modelo(5, "Ya-xun"));
 
             return lis;
         }
@@ -83,7 +83,7 @@ namespace PPAI.AccesoDatos
             list.Add(new CambioEstadoRT(date1, date1, new Estado(1, "Disponible", "Descripcion", "Recurso Tecnologico", false, false)));
             list.Add(new CambioEstadoRT(date1, date2, new Estado(1, "Disponible", "Descripcion", "Recurso Tecnologico", false, false)));
             list.Add(new CambioEstadoRT(date2, date3, new Estado(1, "Disponible", "Descripcion", "Recurso Tecnologico", false, false)));
-            list.Add(new CambioEstadoRT(date3, date4, new Estado(1, "Disponible", "Descripcion", "Recurso Tecnologico", false, false)));
+            list.Add(new CambioEstadoRT(date3, null, new Estado(1, "Disponible", "Descripcion", "Recurso Tecnologico", false, false)));
             list.Add(new CambioEstadoRT(date1, date4, new Estado(6, "EnMantenimientoCorrectivo", "Descripcion", "Recurso Tecnologico", false, false)));
 
             return list;
@@ -96,8 +96,8 @@ namespace PPAI.AccesoDatos
 
             list.Add(new CambioEstadoTurno(date1, date2, new Estado(2, "Cancelable", "Descripcion", "Turno", false, true)));
             list.Add(new CambioEstadoTurno(date2, date3, new Estado(3, "Reservado", "Descripcion", "Turno", true, false)));
-            list.Add(new CambioEstadoTurno(date2, date3, new Estado(4, "PendienteConfirmacionReserva", "Descripcion", "Turno", false, false)));
-            list.Add(new CambioEstadoTurno(date4, date4, new Estado(5, "CanceladoMantenimientoCorrectivo", "Descripcion", "Turno", true, true)));
+            list.Add(new CambioEstadoTurno(date2, date3, new Estado(5, "CanceladoMantenimientoCorrectivo", "Descripcion", "Turno", false, false)));
+            list.Add(new CambioEstadoTurno(date4, null, new Estado(4, "PendienteConfirmacionReserva", "Descripcion", "Turno", true, true)));
 
             return list;
         }

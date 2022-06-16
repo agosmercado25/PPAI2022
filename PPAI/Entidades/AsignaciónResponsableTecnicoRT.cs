@@ -8,19 +8,18 @@ namespace PPAI.Entidades
 {
     public class AsignaciónResponsableTecnicoRT
     {
-        private DateTime fechaDesde;
-        private DateTime fechaHasta;
+        private DateTime? fechaDesde;
+        private DateTime? fechaHasta;
         private List<RecursoTecnologico> rt;
         private PersonalCientifico personal;
-        List<string> dato;
 
-        public DateTime FechaDesde
+        public DateTime? FechaDesde
         {
             get => fechaDesde;
             set => fechaDesde = value;
         }
 
-        public DateTime FechaHasta
+        public DateTime? FechaHasta
         {
             get => fechaHasta;
             set => fechaHasta = value;
@@ -41,7 +40,7 @@ namespace PPAI.Entidades
         {
 
         }
-        public AsignaciónResponsableTecnicoRT(DateTime fechaDesde, DateTime fechaHasta, List<RecursoTecnologico> rt, PersonalCientifico personal)
+        public AsignaciónResponsableTecnicoRT(DateTime? fechaDesde, DateTime? fechaHasta, List<RecursoTecnologico> rt, PersonalCientifico personal)
         {
             this.fechaDesde = fechaDesde;
             this.fechaHasta = fechaHasta;
@@ -49,7 +48,7 @@ namespace PPAI.Entidades
             this.personal = personal;
         }
 
-        public (List<RecursoTecnologico>, List<string>) obtenerRTDisponibles(AsignaciónResponsableTecnicoRT ra)
+        public List<RecursoTecnologico> obtenerRTDisponibles(AsignaciónResponsableTecnicoRT ra)
         {
             rt = ra.RT;
             List<string> datos = new List<string>();
@@ -74,7 +73,7 @@ namespace PPAI.Entidades
                     datos.Add(modelo);
                 }
             }
-            return (rt, datos);
+            return rt;
         }
 
         public bool esAsignacionVigenteCientifico(AsignaciónResponsableTecnicoRT asignaciones)
@@ -84,7 +83,7 @@ namespace PPAI.Entidades
 
         private bool esViegente(AsignaciónResponsableTecnicoRT asignaciones)
         {
-            if (asignaciones.FechaHasta.Equals(asignaciones.FechaDesde))
+            if (asignaciones.FechaHasta.Equals(null))
             {
                 return true;
             }
