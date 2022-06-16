@@ -67,10 +67,6 @@ namespace PPAI.Entidades
                 return false;
             }
         }
-        public void sCancelable()
-        {
-            
-        }
 
         public bool esReservado(Estado e)
         {
@@ -86,7 +82,7 @@ namespace PPAI.Entidades
 
         public bool esPendienteConfirmacionReserva(Estado e)
         {
-            if (e.Nombre.Equals("PendienteConfirmacionReserva"))
+            if (e.Nombre.ToString().Equals("PendienteConfirmacionReserva"))
             {
                 return true;
             }
@@ -96,9 +92,9 @@ namespace PPAI.Entidades
             }
         }
 
-        public bool sCancelable(Estado e)
+        public bool sCancelable()
         {
-            if (e.EsCancelable.ToString().Equals(true))
+            if (this.EsCancelable.Equals(true))
             {
                 return true;
             }
@@ -119,7 +115,7 @@ namespace PPAI.Entidades
 
         public bool esCanceladoMantenimientoCorrectivo(Estado e)
         {
-            if (e.Nombre.ToString().Equals("Cancelado en mantenimiento correctivo"))
+            if (e.Nombre.ToString().Equals("CanceladoMantenimientoCorrectivo"))
             {
                 return true;
             }
@@ -137,7 +133,7 @@ namespace PPAI.Entidades
 
         public bool esEnMantenimientoCorrectivo(Estado e)
         {
-            if (e.Nombre.ToString().Equals("En mantenimiento correctivo"))
+            if (e.Nombre.ToString().Equals("EnMantenimientoCorrectivo"))
             {
                 return true;
             }

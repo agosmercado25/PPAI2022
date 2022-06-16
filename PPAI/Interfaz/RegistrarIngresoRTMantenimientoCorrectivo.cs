@@ -16,6 +16,8 @@ namespace PPAI.Interfaz
     public partial class RegistrarIngresoRTMantenimientoCorrectivo : Form
     {
         GestorRegistrarIngresoRTMantenimientoCorrectivo gestor;
+        string numero;
+        List<Turno> turnos;
 
         public RegistrarIngresoRTMantenimientoCorrectivo()
         {
@@ -41,7 +43,6 @@ namespace PPAI.Interfaz
             DataColumn column;
             try
             {
-                grillaRTDisponibles.DataSource = rts;
                 DataTable tablaRecursos = new DataTable();
 
                 column = new DataColumn();
@@ -66,11 +67,12 @@ namespace PPAI.Interfaz
                     row["Numero"] = r.NumeroRT;
                     row["Tipo"] = r.TipoRecurso.Nombre.ToString();
                     row["Modelo"] = r.Modelo.Nombre.ToString();
-                    row["Marca"] = r.Modelo.Marca.Nombre;
+                    row["Marca"] = r.Modelo.Marca.Nombre.ToString();
                     tablaRecursos.Rows.Add(row);
                 }
 
                 grillaRTDisponibles.DataSource = tablaRecursos;
+                grillaRTDisponibles.Sort(grillaRTDisponibles.Columns["Tipo"], ListSortDirection.Ascending);
 
                 this.Show();
             }
@@ -84,7 +86,8 @@ namespace PPAI.Interfaz
         {
             int indice = e.RowIndex;
             DataGridViewRow filaseleccionada = grillaRTDisponibles.Rows[indice];
-            string numero = filaseleccionada.Cells["Numero"].Value.ToString();
+            string numero = filaseleccionada.Cells["Num"].Value.ToString();
+            this.numero = numero;
             gestor.rtSeleccionado(numero);
             groupBoxFin.Enabled = true;
             solicitarFechaFinPrevista();
@@ -123,12 +126,56 @@ namespace PPAI.Interfaz
                 string motivoMantenimiento = txtRazon.Text;
                 gestor.fechaFinPrevista(fechaFin);
                 gestor.razonMantenimiento(motivoMantenimiento);
-                List<Turno> turnos = gestor.obtenerTurnosRTCancelables();
-                TurnosRT ventanaTurnos = new TurnosRT();
-                ventanaTurnos.cargarGrillaTurnos(turnos);
-                ventanaTurnos.Show();
+                
             }
             
+        }
+
+        public void confirmarMantenimiento()
+        {
+            gestor.ingresarRTMantenimientoCorrectivo();
+        }
+
+        public void cargarTurnos(List<Turno> turnos)
+        {
+            TurnosRT ventanaTurnos = new TurnosRT();
+            ventanaTurnos.cargarGrillaTurnos(turnos);
+            ventanaTurnos.Show();
+            this.turnos = turnos;
+            confirmarMantenimiento();
+            btnEnviarMail.Enabled = true;
+        }
+
+        private void btnEnviarMail_Click(object sender, EventArgs e)
+        {
+            gestor.generarMail();
+        }
+
+        public void enviarNotificacion()
+        {
+            DialogResult resultado = MessageBox.Show("Esta seguro que desea confirmar y cancelar los turnos?", "Alerta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (resultado == DialogResult.OK)
+            {
+                MessageBox.Show("Correo enviado con exito");
+            }
+            else
+            {
+
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Principal menu = new Principal();
+            menu.Show();
+        }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Principal menu = new Principal();
+            menu.Show();
         }
     }
 }

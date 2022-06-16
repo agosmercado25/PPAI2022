@@ -8,16 +8,16 @@ namespace PPAI.Entidades
 {
     public class CambioEstadoTurno
     {
-        private DateTime fechaHoraDesde;
-        private DateTime fechaHoraHasta;
+        private DateTime? fechaHoraDesde;
+        private DateTime? fechaHoraHasta;
         private Estado estado;
 
-        public DateTime FechaHoraDesde
+        public DateTime? FechaHoraDesde
         {
             get => fechaHoraDesde; set => fechaHoraDesde = value;
         }
 
-        public DateTime FechaHoraHasta
+        public DateTime? FechaHoraHasta
         {
             get => fechaHoraHasta; set => fechaHoraHasta = value;
         }
@@ -32,16 +32,16 @@ namespace PPAI.Entidades
 
         }
 
-        public CambioEstadoTurno(DateTime fechaHoraDesde, DateTime fechaHoraHasta, Estado estado)
+        public CambioEstadoTurno(DateTime? fechaHoraDesde, DateTime? fechaHoraHasta, Estado estado)
         {
             this.fechaHoraHasta = fechaHoraHasta;
             this.estado = estado;
             this.fechaHoraDesde = fechaHoraDesde;
         }
 
-        public bool esActual(CambioEstadoTurno ce)
+        public bool esActual()
         {
-            if (this.FechaHoraDesde == this.FechaHoraHasta)
+            if (this.fechaHoraHasta.Equals(null))
             {
                 return true;
             }
@@ -51,15 +51,15 @@ namespace PPAI.Entidades
             }
         }
 
-        public bool esCancelable(CambioEstadoTurno ce)
+        public bool esCancelable()
         {
-            return ce.EstadoActual.sCancelable(EstadoActual);
+            return this.estado.sCancelable();
         }
 
-        public bool esConReserva(CambioEstadoTurno ce)
+        public bool esConReserva()
         {
-            bool esReserv = ce.EstadoActual.esReservado(estado);
-            bool esPendi = ce.EstadoActual.esPendienteConfirmacionReserva(estado);
+            bool esReserv = this.EstadoActual.esReservado(estado);
+            bool esPendi = this.EstadoActual.esPendienteConfirmacionReserva(estado);
 
             if (esReserv && esPendi)
             {

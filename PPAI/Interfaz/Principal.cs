@@ -38,5 +38,17 @@ namespace PPAI.Interfaz
         {
 
         }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            this.Close();
+            login.Show();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

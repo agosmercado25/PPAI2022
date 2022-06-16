@@ -123,6 +123,12 @@
     <Compile Include="Interfaz\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaz\Notificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Interfaz\Notificacion.Designer.cs">
+      <DependentUpon>Notificacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaz\Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Interfaz\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Interfaz\Notificacion.resx">
+      <DependentUpon>Notificacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Interfaz\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>

@@ -8,20 +8,20 @@ namespace PPAI.Entidades
 {
     public class Mantenimiento
     {
-        private DateTime fechaFin;
-        private DateTime fechaInicio;
-        private DateTime fechaInicioPrevista;
+        private DateTime? fechaFin;
+        private DateTime? fechaInicio;
+        private DateTime? fechaInicioPrevista;
         private string motivoMantenimiento;
 
-        public DateTime FechaFin
+        public DateTime? FechaFin
         {
             get => fechaFin;
             set => fechaFin = value;
         }
 
-        public DateTime FechaInicio { get => fechaInicio; set => fechaInicio = value; }
+        public DateTime? FechaInicio { get => fechaInicio; set => fechaInicio = value; }
 
-        public DateTime FechaInicioPrevista { get => fechaInicioPrevista; set => fechaInicioPrevista = value; }
+        public DateTime? FechaInicioPrevista { get => fechaInicioPrevista; set => fechaInicioPrevista = value; }
 
         public string MotivoMantenimiento { get => motivoMantenimiento; set => motivoMantenimiento = value;
         }
@@ -31,7 +31,7 @@ namespace PPAI.Entidades
 
         }
 
-        public Mantenimiento(DateTime fechaFin, DateTime fechaInicio, DateTime fechaInicioPrevista, string motivoMantenimiento)
+        public Mantenimiento(DateTime? fechaFin, DateTime? fechaInicio, DateTime? fechaInicioPrevista, string motivoMantenimiento)
         {
             this.fechaFin = fechaFin;
             this.fechaInicio = fechaInicio;

@@ -25,7 +25,8 @@ namespace PPAI.Controlador
         private DateTime timeActual;
         private string razonMantenimientoIngresado;
         private List<Turno> listaTurnos;
-        private List<string> datos;
+        private Estado esConfMCorr;
+        private Estado esEnMCorr;
 
 
 
@@ -36,13 +37,8 @@ namespace PPAI.Controlador
         }
 
         public GestorRegistrarIngresoRTMantenimientoCorrectivo(RegistrarIngresoRTMantenimientoCorrectivo pantalla)
-        //, RecursoTecnologico rt, Sesion sesion, Estado estado, List<AsignaciónResponsableTecnicoRT> asigResTecRT
         {
             this.pantalla = pantalla;
-        //    this.rt = rt;
-        //    this.sesion = sesion;
-        //    this.estado = estado;
-        //    this.asigResTecRT = asigResTecRT;
         }
 
         public void registrarIngresoRTMantenimientoCorrectivo()
@@ -54,21 +50,17 @@ namespace PPAI.Controlador
 
             ra = obtenerRTCientifico(pc);
             //Obtener RTDisponibles para la asignacion responsable tecnico RT
-            (lisRT, datos) = obtenerRTDisponibles(ra);
+            (lisRT) = obtenerRTDisponibles(ra);
             //ordenarYAgruparRTPorCI()
             pantalla.cargarGrillaRTDisponibles(lisRT);
             pantalla.solicitarSeleccionRT();
+            
         }       
 
         public void obtenerUsuarioLogueado(CentroDeInvestigacion ci)
         {
             this.sesion = Datos.sesion;
             this.sesion.mostrarCientifico(sesion);
-            //bool esLogueadoCI = ci.esDeCentroDeInvestigacion(ci, sesion);
-            //if (esLogueadoCI)
-            //{
-            //    MessageBox.Show(sesion.ToString());
-            //}
         }
 
         public AsignaciónResponsableTecnicoRT obtenerRTCientifico(PersonalCientifico pc)
@@ -88,10 +80,10 @@ namespace PPAI.Controlador
             return ra;
         }
 
-        private (List<RecursoTecnologico>, List<string>) obtenerRTDisponibles(AsignaciónResponsableTecnicoRT ra)
+        private List<RecursoTecnologico> obtenerRTDisponibles(AsignaciónResponsableTecnicoRT ra)
         {
-            (lisRT, datos) = ra.obtenerRTDisponibles(ra);
-            return (lisRT,datos);
+            lisRT = ra.obtenerRTDisponibles(ra);
+            return lisRT;
         }
 
         public PersonalCientifico obtenerPersonalCientifico()
@@ -99,12 +91,6 @@ namespace PPAI.Controlador
             pc = Datos.pc;
             return pc;
             
-        }
-
-        public void OrdenarYAgruparRTPorCI(List<string[]> listaDatos)
-        {
-            //listaDatos.Sort((x, y) => x[1].CompareTo(y[1]));
-            //lisRT.Sort((x, y) => x.ObtenerCI().GetNombre().CompareTo(y.ObtenerCI().GetNombre()));
         }
 
         public RecursoTecnologico rtSeleccionado(string numero)
@@ -127,6 +113,15 @@ namespace PPAI.Controlador
         public void razonMantenimiento(string razon)
         {
             this.razonMantenimientoIngresado = razon;
+            paso();
+        }
+
+        public void paso()
+        {
+            timeActual = obtenerFechaHora();
+            listaTurnos = obtenerTurnosRTCancelables();
+            obtenerReservasVigentes();
+
         }
 
         public DateTime obtenerFechaHora()
@@ -136,32 +131,14 @@ namespace PPAI.Controlador
 
         public List<Turno> obtenerTurnosRTCancelables()
         {
-            //List<Turno> listaTurnos = this.rtSelec.Turnos;
-            //for (int i = 0; i < listaTurnos.Count; i++)
-            //{
-            //    List<CambioEstadoTurno> listaCambio = listaTurnos[i].CambioEstado;
-            //    for (int j = 0; j < listaCambio.Count; j++)
-            //    {
-            //        if (listaCambio[i].FechaHoraDesde == listaCambio[i].FechaHoraHasta)
-            //        {
-            //            MessageBox.Show("desde" + listaCambio[i].FechaHoraDesde);
-            //            MessageBox.Show("Hasta" + listaCambio[i].FechaHoraDesde);
-            //        }
-            //        Estado estados = listaCambio[i].EstadoActual;
-            //        //MessageBox.Show(estados.Nombre.ToString());
-            //    }
-            //    //MessageBox.Show(listaTurnos.Count.ToString());
-            //}
-
-            listaTurnos = this.rtSelec.obtenerTurnosCancelablesEnPeriodo(this.rtSelec, fechaFinPrevistaSeleccionada.Day, fechaFinPrevistaSeleccionada.Month);
+            listaTurnos = this.rtSelec.obtenerTurnosCancelablesEnPeriodo(listaTurnos, fechaFinPrevistaSeleccionada.Day, fechaFinPrevistaSeleccionada.Month);
             return listaTurnos;
         }
 
         public void obtenerReservasVigentes()
         {
-            this.rtSelec.mostrarTurnosReserva(listaTurnos);
-            //pantalla.cargarGrillaTurnos(listaTurnos);
-            //return listaTurnos;
+            listaTurnos = this.rtSelec.mostrarTurnosReserva(listaTurnos);
+            pantalla.cargarTurnos(listaTurnos);
         }
 
         public void agruparPorCientifico()
@@ -171,8 +148,9 @@ namespace PPAI.Controlador
 
         public void ingresarRTMantenimientoCorrectivo()
         {
-            rtSelec.ingresarEnMantenimientoCorrectivo(rtSelec, timeActual, fechaFinPrevistaSeleccionada, razonMantenimientoIngresado);
-            rtSelec.cancelarTurnos(rtSelec, timeActual);
+            obtenerEstado();
+            rtSelec.ingresarEnMantenimientoCorrectivo(timeActual, fechaFinPrevistaSeleccionada, razonMantenimientoIngresado,esConfMCorr);
+            rtSelec.cancelarTurnos(timeActual, esConfMCorr);
         }
 
         public void obtenerEstado()
@@ -182,14 +160,29 @@ namespace PPAI.Controlador
             {
                 bool esAT = listaEstado[i].esAmbitoTurno(listaEstado[i]);
                 bool esCMC = listaEstado[i].esCanceladoMantenimientoCorrectivo(listaEstado[i]);
+                if (esAT && esCMC)
+                {
+                    esConfMCorr = listaEstado[i];
+                }
                 bool esART = listaEstado[i].esAmbitoRT(listaEstado[i]);
                 bool esEnMC = listaEstado[i].esEnMantenimientoCorrectivo(listaEstado[i]);
+                if (esAT && esCMC)
+                {
+                    esEnMCorr = listaEstado[i];
+                }
             }
         }
 
         public void generarMail()
         {
+            Notificacion ventanaN = new Notificacion();
+            ventanaN.Show();
+            ventanaN.cargarDatos(rtSelec,listaTurnos);
+        }
 
+        public void finCU()
+        {
+            
         }
     }    
 }
