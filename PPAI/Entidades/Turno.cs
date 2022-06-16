@@ -82,13 +82,14 @@ namespace PPAI.Entidades
                     {
                         this.ultimo = cambio;                       
                     }
+                   
                 }
 
                 if (ultimo.esCancelable())
                 {
                     return true;
                 }
-                return false;
+                //return false;
             }
             return false;
         }

@@ -18,9 +18,9 @@ namespace PPAI.Entidades
         private TipoRecursoTecnológico tipoRecurso;
         private Modelo modelo;
         private List<CambioEstadoRT> cambioEstado;
-        private List<Mantenimiento> mantenimiento;
+        //private List<Mantenimiento> mantenimiento;
         private CambioEstadoRT cambioEstadoActual;
-        private List<CambioEstadoTurno> cambioEstadoTurno;
+        //private List<CambioEstadoTurno> cambioEstadoTurno;
 
         public int NumeroRT
         {
@@ -128,21 +128,29 @@ namespace PPAI.Entidades
         public List<Turno> obtenerTurnosCancelablesEnPeriodo(List<Turno> turnos, int dia, int mes)
         {
             //List<Turno> turnosList = new List<Turno>();
-
+            bool ban = false;
             foreach (Turno turno in this.turnos)
             {
                 if (turno.esCancelableEnPeriodo(dia, mes) == false)
                 {
-                    turnos.Remove(turno);
+                    ban = true;
+                    //turnos.Remove(turno);
                 }
             }
+            if (ban)
+            {
+                return null;
+            }
+            else
+            {
+                return turnos;
+            }
 
-            return turnos;
-         }
+            
+        }
 
         public List<Turno> mostrarTurnosReserva(List<Turno> turnos)
         {
-
             foreach (Turno turno in this.turnos)
             {
                 if (turno.esConReserva() == false)

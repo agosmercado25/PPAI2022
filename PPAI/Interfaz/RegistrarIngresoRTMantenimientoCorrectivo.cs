@@ -133,7 +133,7 @@ namespace PPAI.Interfaz
 
         public void confirmarMantenimiento()
         {
-            gestor.ingresarRTMantenimientoCorrectivo();
+            gestor.ingresarRTMantenimientoCorrectivo(true);
         }
 
         public void cargarTurnos(List<Turno> turnos)
@@ -148,24 +148,14 @@ namespace PPAI.Interfaz
 
         private void btnEnviarMail_Click(object sender, EventArgs e)
         {
+            btnCancelar.Enabled = false;
             gestor.generarMail();
-        }
-
-        public void enviarNotificacion()
-        {
-            DialogResult resultado = MessageBox.Show("Esta seguro que desea confirmar y cancelar los turnos?", "Alerta", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (resultado == DialogResult.OK)
-            {
-                MessageBox.Show("Correo enviado con exito");
-            }
-            else
-            {
-
-            }
+            limpiarCampos();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("El mantenimiento fue cancelado");
             this.Close();
             Principal menu = new Principal();
             menu.Show();
@@ -176,6 +166,41 @@ namespace PPAI.Interfaz
             this.Close();
             Principal menu = new Principal();
             menu.Show();
+        }
+
+        public void aviso()
+        {
+            DialogResult resultado = MessageBox.Show("No existen recursos asociados al responsable técnico en estado posible de ingresar en mantenimiento correctivo", "Alerta", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            if (resultado == DialogResult.OK)
+            {
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("No hay recursos asociados");
+                this.Close();
+            }
+        }
+
+        public void aviso2()
+        {
+            DialogResult resultado = MessageBox.Show("No existen turnos reservados a cancelar.", "Alerta", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+            if (resultado == DialogResult.OK)
+            {
+                btnEnviarMail.Enabled = true;
+                gestor.ingresarRTMantenimientoCorrectivo(false);
+            }
+            else
+            {
+                MessageBox.Show("No hay turnos.");
+                this.Close();
+            }
+        }
+
+        public void limpiarCampos()
+        {
+            txtFechaFinPrevista.Text = "";
+            txtRazon.Text = "";
         }
     }
 }

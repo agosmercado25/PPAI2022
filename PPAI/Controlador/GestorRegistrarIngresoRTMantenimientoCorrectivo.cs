@@ -47,11 +47,9 @@ namespace PPAI.Controlador
             CentroDeInvestigacion ci = Datos.ci;
             //Revisar 
             obtenerUsuarioLogueado(ci);
-
             ra = obtenerRTCientifico(pc);
             //Obtener RTDisponibles para la asignacion responsable tecnico RT
             (lisRT) = obtenerRTDisponibles(ra);
-            //ordenarYAgruparRTPorCI()
             pantalla.cargarGrillaRTDisponibles(lisRT);
             pantalla.solicitarSeleccionRT();
             
@@ -83,6 +81,11 @@ namespace PPAI.Controlador
         private List<RecursoTecnologico> obtenerRTDisponibles(AsignaciónResponsableTecnicoRT ra)
         {
             lisRT = ra.obtenerRTDisponibles(ra);
+            if (lisRT.Count == 0)
+            {
+                pantalla.aviso();
+            }
+            
             return lisRT;
         }
 
@@ -120,7 +123,15 @@ namespace PPAI.Controlador
         {
             timeActual = obtenerFechaHora();
             listaTurnos = obtenerTurnosRTCancelables();
-            obtenerReservasVigentes();
+            
+            if (listaTurnos != null)
+            {
+                pantalla.aviso2();
+            }
+            else
+            {
+                obtenerReservasVigentes();
+            }
 
         }
 
@@ -146,11 +157,15 @@ namespace PPAI.Controlador
 
         }
 
-        public void ingresarRTMantenimientoCorrectivo()
+        public void ingresarRTMantenimientoCorrectivo(bool ban)
         {
             obtenerEstado();
             rtSelec.ingresarEnMantenimientoCorrectivo(timeActual, fechaFinPrevistaSeleccionada, razonMantenimientoIngresado,esConfMCorr);
-            rtSelec.cancelarTurnos(timeActual, esConfMCorr);
+            if (ban)
+            {
+                rtSelec.cancelarTurnos(timeActual, esConfMCorr);
+            }
+            
         }
 
         public void obtenerEstado()
