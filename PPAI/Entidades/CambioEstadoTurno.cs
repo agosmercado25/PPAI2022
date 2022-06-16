@@ -41,7 +41,7 @@ namespace PPAI.Entidades
 
         public bool esActual(CambioEstadoTurno ce)
         {
-            if (ce.FechaHoraHasta.Equals(ce.FechaHoraDesde))
+            if (this.FechaHoraDesde == this.FechaHoraHasta)
             {
                 return true;
             }

@@ -15,6 +15,7 @@ namespace PPAI.Entidades
         private DateTime fechaHoraFin;
         private List<CambioEstadoTurno> cambioEstado;
         private AsignaciónCientificoDelCI asignacion;
+        private CambioEstadoTurno esActu;
 
         public int Id
         {
@@ -78,6 +79,7 @@ namespace PPAI.Entidades
                     bool esAc = CambioEstado[i].esActual(cambioEstado[i]);
                     if (esAc)
                     {
+                        //this.esActu = CambioEstado[i];
                         bool esCan = cambioEstado[i].esCancelable(cambioEstado[i]);
                         if (esCan)
                         {

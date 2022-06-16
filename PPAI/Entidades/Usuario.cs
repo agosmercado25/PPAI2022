@@ -65,8 +65,7 @@ namespace PPAI.Entidades
         }
 
         public Usuario obtenerPersonal()
-        {
-            
+        {           
             return this;
         }
     }

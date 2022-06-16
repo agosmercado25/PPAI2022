@@ -67,8 +67,7 @@ namespace PPAI.Entidades
             
             if(sesionActual.UsuarioSeleccionado != null)
             {
-                return UsuarioSeleccionado.obtenerPersonal();
-                
+                return UsuarioSeleccionado.obtenerPersonal();             
             }
             else
             {
@@ -76,12 +75,6 @@ namespace PPAI.Entidades
                 return null;
             }
         }
-
-        //public Usuario mostrarCientifico2()
-        //{
-        //    return this.usuarioSeleccionado.obtenerPersonal();
-        //}
-
 
     }
 }

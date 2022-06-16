@@ -48,7 +48,35 @@ namespace PPAI.Entidades
             this.rt = rt;
             this.personal = personal;
         }
-        
+
+        public (List<RecursoTecnologico>, List<string>) obtenerRTDisponibles(AsignaciónResponsableTecnicoRT ra)
+        {
+            rt = ra.RT;
+            List<string> datos = new List<string>();
+            //string tipo, modelo, marca;
+            for (int i = 0; i < rt.Count; i++)
+            {
+                bool esDispo = rt[i].esDisponible(rt[i]);
+                if (!esDispo)
+                {
+                    rt.RemoveAt(i);
+                }
+            }
+
+            for (int i = 0; i < rt.Count; i++)
+            {
+                if (rt[i] != null)
+                {
+                    (int num, string tipo, string marca, string modelo) = rt[i].mostrarDatosRT(rt[i]);
+                    datos.Add(num.ToString());
+                    datos.Add(tipo);
+                    datos.Add(marca);
+                    datos.Add(modelo);
+                }
+            }
+            return (rt, datos);
+        }
+
         public bool esAsignacionVigenteCientifico(AsignaciónResponsableTecnicoRT asignaciones)
         {
             return esViegente(asignaciones);
@@ -65,30 +93,5 @@ namespace PPAI.Entidades
                 return false;
             }
         }
-
-        public List<RecursoTecnologico> obtenerRTDisponibles(AsignaciónResponsableTecnicoRT ra)
-        {
-            rt = ra.RT;
-            List<object> datos = new List<object>();
-            //string tipo, modelo, marca;
-            for (int i = 0; i < rt.Count; i++)
-            {
-                bool esDispo = rt[i].esDisponible(rt[i]);
-                if (!esDispo)
-                {
-                    rt.RemoveAt(i);
-                }
-            }
-
-            for (int i = 0; i < rt.Count; i++)
-            {
-                
-                datos.AddRange(rt[i].mostrarDatosRT(rt[i]));
-                
-            }
-            return rt;
-        }
-
-
     }
 }

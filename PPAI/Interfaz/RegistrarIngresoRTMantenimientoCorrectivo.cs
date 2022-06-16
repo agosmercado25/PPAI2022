@@ -35,19 +35,48 @@ namespace PPAI.Interfaz
             
         }
 
-        public bool cargarGrillaRTDisponibles(List<RecursoTecnologico> rts)
+        public void cargarGrillaRTDisponibles(List<RecursoTecnologico> rts)
         {
+            DataRow row;
+            DataColumn column;
             try
             {
                 grillaRTDisponibles.DataSource = rts;
+                DataTable tablaRecursos = new DataTable();
+
+                column = new DataColumn();
+                column.ColumnName = "Numero";
+                tablaRecursos.Columns.Add(column);
+
+                column = new DataColumn();
+                column.ColumnName = "Tipo";
+                tablaRecursos.Columns.Add(column);
+
+                column = new DataColumn();
+                column.ColumnName = "Marca";
+                tablaRecursos.Columns.Add(column);
+
+                column = new DataColumn();
+                column.ColumnName = "Modelo";
+                tablaRecursos.Columns.Add(column);
+
+                foreach (RecursoTecnologico r in rts)
+                {
+                    row = tablaRecursos.NewRow();
+                    row["Numero"] = r.NumeroRT;
+                    row["Tipo"] = r.TipoRecurso.Nombre.ToString();
+                    row["Modelo"] = r.Modelo.Nombre.ToString();
+                    row["Marca"] = r.Modelo.Marca.Nombre;
+                    tablaRecursos.Rows.Add(row);
+                }
+
+                grillaRTDisponibles.DataSource = tablaRecursos;
+
                 this.Show();
-                MessageBox.Show("Por favor seleccionar un recurso tecnologico");
-                return true;
             }
             catch (Exception)
             {
-                MessageBox.Show("Error al obtener listado de estados");
-                return false;
+                MessageBox.Show("No hay listado de recursos tecnologicos");
             }            
         }
 
@@ -55,12 +84,11 @@ namespace PPAI.Interfaz
         {
             int indice = e.RowIndex;
             DataGridViewRow filaseleccionada = grillaRTDisponibles.Rows[indice];
-            string numero = filaseleccionada.Cells["numeroRT"].Value.ToString();
+            string numero = filaseleccionada.Cells["Numero"].Value.ToString();
             gestor.rtSeleccionado(numero);
             groupBoxFin.Enabled = true;
-            MessageBox.Show("Ingresar fecha fin prevista y motivo de mantenimiento");
+            solicitarFechaFinPrevista();
             txtFechaFinPrevista.Focus();
-
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -73,9 +101,14 @@ namespace PPAI.Interfaz
 
         }
 
+        public void solicitarSeleccionRT()
+        {
+            MessageBox.Show("Por favor seleccionar un recurso tecnologico");
+        }
+
         public void solicitarFechaFinPrevista()
         {
-            MessageBox.Show("Por favor ingrese la fecha");
+            MessageBox.Show("Ingresar fecha fin prevista y motivo de mantenimiento");
         }
 
         private void btnFechaRazon_Click(object sender, EventArgs e)

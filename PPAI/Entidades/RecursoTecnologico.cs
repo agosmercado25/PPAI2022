@@ -19,6 +19,8 @@ namespace PPAI.Entidades
         private Modelo modelo;
         private List<CambioEstadoRT> cambioEstado;
         private List<Mantenimiento> mantenimiento;
+        private CambioEstadoRT cambioEstadoActual;
+        private List<CambioEstadoTurno> cambioEstadoTurno;
 
         public int NumeroRT
         {
@@ -100,21 +102,22 @@ namespace PPAI.Entidades
                     bool esDisp = cambioEstado[i].esDisponible(cambioEstado[i]);
                     if (esDisp)
                     {
+                        this.cambioEstadoActual = cambioEstado[i];
                         return true;
                     }
                 }
             }
-
+            
             return false;
         }
 
-        public List<object> mostrarDatosRT(RecursoTecnologico rt)
+        public (int,string,string,string) mostrarDatosRT(RecursoTecnologico rt)
         {
             int num = getNumero(rt);
-            List<object> list = this.Modelo.mostrarMarcaYModelo(rt);
-            list.Add(this.TipoRecurso.getNombre(rt));
-            list.Add(rt);
-            return list;
+            string tipo = rt.TipoRecurso.getNombre().Nombre;
+            (string marca, string modelo) = rt.Modelo.mostrarMarcaYModelo();
+            
+            return (num,tipo,marca,modelo);
         }
 
         public int getNumero(RecursoTecnologico rt)
@@ -130,11 +133,12 @@ namespace PPAI.Entidades
                 CambioEstadoTurno esT = Turnos[i].esCancelableEnPeriodo(Turnos[i], dia, mes);
                 if (esT != null)
                 {
+                    cambioEstadoTurno.Add(esT);
                     turnoList.Add(Turnos[i]);
                 }
             }
             return turnoList;
-        }
+         }
 
         public List<Turno> mostrarTurnosReserva(List<Turno> turnos)
         {
