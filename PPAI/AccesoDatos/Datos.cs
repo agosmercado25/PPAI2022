@@ -20,7 +20,7 @@ namespace PPAI.AccesoDatos
 
         public static readonly Marca marca1 = new Marca(1, "SuperSu", agregarModelo());
 
-        public static readonly PersonalCientifico pc = new PersonalCientifico(25, "Mora", "Lopez", 36985214, "usuario1@facultad.com", "usuario1@gmail.com", 351669784, usuario);
+        public static readonly PersonalCientifico pc = new PersonalCientifico(25, "Julian", "Lopez", 36985214, "usuario1@facultad.com", "usuario1@gmail.com", 351669784, usuario);
 
         public static readonly Sesion sesion = new Sesion(DateTime.Now, DateTime.Now, usuario);
 

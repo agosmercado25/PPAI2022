@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrarIngresoRTMantenimientoCorrectivo));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grillaRTDisponibles = new System.Windows.Forms.DataGridView();
@@ -76,14 +76,14 @@
             // grillaRTDisponibles
             // 
             this.grillaRTDisponibles.BackgroundColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grillaRTDisponibles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grillaRTDisponibles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.grillaRTDisponibles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaRTDisponibles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FechaAlta,
@@ -112,16 +112,16 @@
             // Num
             // 
             this.Num.DataPropertyName = "Numero";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Num.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Num.DefaultCellStyle = dataGridViewCellStyle2;
             this.Num.HeaderText = "Numero";
             this.Num.Name = "Num";
             // 
             // Tipo
             // 
             this.Tipo.DataPropertyName = "Tipo";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Tipo.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Tipo.DefaultCellStyle = dataGridViewCellStyle3;
             this.Tipo.HeaderText = "Tipo";
             this.Tipo.Name = "Tipo";
             this.Tipo.Width = 150;
@@ -129,8 +129,8 @@
             // Marc
             // 
             this.Marc.DataPropertyName = "Marca";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Marc.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Marc.DefaultCellStyle = dataGridViewCellStyle4;
             this.Marc.HeaderText = "Marca";
             this.Marc.Name = "Marc";
             this.Marc.Width = 150;
@@ -138,8 +138,8 @@
             // Modelo
             // 
             this.Modelo.DataPropertyName = "Modelo";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Modelo.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Modelo.DefaultCellStyle = dataGridViewCellStyle5;
             this.Modelo.HeaderText = "Modelo";
             this.Modelo.Name = "Modelo";
             this.Modelo.Width = 150;
@@ -203,7 +203,7 @@
             this.txtFechaFinPrevista.Location = new System.Drawing.Point(168, 19);
             this.txtFechaFinPrevista.Mask = "00/00/0000";
             this.txtFechaFinPrevista.Name = "txtFechaFinPrevista";
-            this.txtFechaFinPrevista.Size = new System.Drawing.Size(116, 30);
+            this.txtFechaFinPrevista.Size = new System.Drawing.Size(120, 30);
             this.txtFechaFinPrevista.TabIndex = 18;
             this.txtFechaFinPrevista.ValidatingType = typeof(System.DateTime);
             // 
@@ -249,7 +249,7 @@
             // 
             this.btnEnviarMail.Enabled = false;
             this.btnEnviarMail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEnviarMail.Location = new System.Drawing.Point(524, 471);
+            this.btnEnviarMail.Location = new System.Drawing.Point(537, 471);
             this.btnEnviarMail.Name = "btnEnviarMail";
             this.btnEnviarMail.Size = new System.Drawing.Size(120, 39);
             this.btnEnviarMail.TabIndex = 22;

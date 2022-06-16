@@ -30,15 +30,22 @@ namespace PPAI.Interfaz
             nombreRecurso = "Número: " + rt.NumeroRT.ToString() + " - Tipo: " + rt.TipoRecurso.Nombre.ToString();
             textRT.Text = nombreRecurso;
 
-
-            for (int i = 0; i < turnos.Count; i++)
+            if (turnos != null)
             {
-                listInformacion.Items.Add("Informacion del turno: "+(i+1).ToString());
-                listInformacion.Items.Add("Fecha/Hora Inicio: " + turnos[i].FechaHoraInicio.ToString());
-                listInformacion.Items.Add("Fecha/Hora Fin: " + turnos[i].FechaHoraFin.ToString());
-                listInformacion.Items.Add("Cientifico: " + turnos[i].AsignacionCientifico.PC.Nombre.ToString());
-                listInformacion.Items.Add("Mail: " + turnos[i].AsignacionCientifico.PC.CorreoInstitu.ToString());
+                for (int i = 0; i < turnos.Count; i++)
+                {
+                    listInformacion.Items.Add("Informacion del turno: " + (i + 1).ToString());
+                    listInformacion.Items.Add("Fecha/Hora Inicio: " + turnos[i].FechaHoraInicio.ToString());
+                    listInformacion.Items.Add("Fecha/Hora Fin: " + turnos[i].FechaHoraFin.ToString());
+                    listInformacion.Items.Add("Cientifico: " + turnos[i].AsignacionCientifico.PC.Nombre.ToString());
+                    listInformacion.Items.Add("Mail: " + turnos[i].AsignacionCientifico.PC.CorreoInstitu.ToString());
+                }
             }
+            else
+            {
+                listInformacion.Items.Add("No tiene turnos para cancelar");
+            }
+            
 
 
         }
@@ -61,6 +68,7 @@ namespace PPAI.Interfaz
                 MessageBox.Show("Mensaje a WhatsApp enviado con éxito");
             }
 
+            
             this.Close();
             
         }
