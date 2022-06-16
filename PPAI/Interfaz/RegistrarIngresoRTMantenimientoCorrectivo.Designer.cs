@@ -30,10 +30,6 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.grillaRTDisponibles = new System.Windows.Forms.DataGridView();
-            this.NumeroRT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoRecurso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txtRazon = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,6 +37,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBoxFin = new System.Windows.Forms.GroupBox();
             this.btnFechaRazon = new System.Windows.Forms.Button();
+            this.NumeroRT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaAlta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Imagenes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Periodicidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fraccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Duracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoRecurso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grillaRTDisponibles)).BeginInit();
             this.groupBoxFin.SuspendLayout();
@@ -65,37 +69,18 @@
             this.grillaRTDisponibles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grillaRTDisponibles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NumeroRT,
+            this.FechaAlta,
+            this.Imagenes,
+            this.Periodicidad,
+            this.Fraccion,
+            this.Duracion,
             this.TipoRecurso,
-            this.Modelo,
-            this.Marca});
+            this.Modelo});
             this.grillaRTDisponibles.Location = new System.Drawing.Point(12, 82);
             this.grillaRTDisponibles.Name = "grillaRTDisponibles";
             this.grillaRTDisponibles.Size = new System.Drawing.Size(774, 178);
             this.grillaRTDisponibles.TabIndex = 2;
             this.grillaRTDisponibles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grillaRTDisponibles_CellContentClick);
-            // 
-            // NumeroRT
-            // 
-            this.NumeroRT.DataPropertyName = "NumeroRT";
-            this.NumeroRT.HeaderText = "NumeroRT";
-            this.NumeroRT.Name = "NumeroRT";
-            // 
-            // TipoRecurso
-            // 
-            this.TipoRecurso.DataPropertyName = "TipoRecurso";
-            this.TipoRecurso.HeaderText = "Tipo Recurso";
-            this.TipoRecurso.Name = "TipoRecurso";
-            // 
-            // Modelo
-            // 
-            this.Modelo.DataPropertyName = "Modelo";
-            this.Modelo.HeaderText = "Modelo";
-            this.Modelo.Name = "Modelo";
-            // 
-            // Marca
-            // 
-            this.Marca.HeaderText = "Marca";
-            this.Marca.Name = "Marca";
             // 
             // label1
             // 
@@ -170,6 +155,59 @@
             this.btnFechaRazon.UseVisualStyleBackColor = true;
             this.btnFechaRazon.Click += new System.EventHandler(this.btnFechaRazon_Click);
             // 
+            // NumeroRT
+            // 
+            this.NumeroRT.DataPropertyName = "NumeroRT";
+            this.NumeroRT.HeaderText = "NumeroRT";
+            this.NumeroRT.Name = "NumeroRT";
+            // 
+            // FechaAlta
+            // 
+            this.FechaAlta.DataPropertyName = "FechaAlta";
+            this.FechaAlta.HeaderText = "FechaAlta";
+            this.FechaAlta.Name = "FechaAlta";
+            this.FechaAlta.Visible = false;
+            // 
+            // Imagenes
+            // 
+            this.Imagenes.DataPropertyName = "Imagenes";
+            this.Imagenes.HeaderText = "Imagenes";
+            this.Imagenes.Name = "Imagenes";
+            this.Imagenes.Visible = false;
+            // 
+            // Periodicidad
+            // 
+            this.Periodicidad.DataPropertyName = "Periodicidad";
+            this.Periodicidad.HeaderText = "Periodicidad";
+            this.Periodicidad.Name = "Periodicidad";
+            this.Periodicidad.Visible = false;
+            // 
+            // Fraccion
+            // 
+            this.Fraccion.DataPropertyName = "FraccionHorarioTurno";
+            this.Fraccion.HeaderText = "Fraccion";
+            this.Fraccion.Name = "Fraccion";
+            this.Fraccion.Visible = false;
+            // 
+            // Duracion
+            // 
+            this.Duracion.DataPropertyName = "Duracion";
+            this.Duracion.HeaderText = "Duracion";
+            this.Duracion.Name = "Duracion";
+            this.Duracion.Visible = false;
+            // 
+            // TipoRecurso
+            // 
+            this.TipoRecurso.DataPropertyName = "TipoRecurso";
+            this.TipoRecurso.HeaderText = "Tipo Recurso";
+            this.TipoRecurso.Name = "TipoRecurso";
+            // 
+            // Modelo
+            // 
+            this.Modelo.DataPropertyName = "Modelo";
+            this.Modelo.HeaderText = "Modelo";
+            this.Modelo.Name = "Modelo";
+            // 
             // RegistrarIngresoRTMantenimientoCorrectivo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -200,10 +238,14 @@
         private System.Windows.Forms.MaskedTextBox txtFechaFinPrevista;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBoxFin;
+        private System.Windows.Forms.Button btnFechaRazon;
         private System.Windows.Forms.DataGridViewTextBoxColumn NumeroRT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaAlta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Imagenes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Periodicidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fraccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Duracion;
         private System.Windows.Forms.DataGridViewTextBoxColumn TipoRecurso;
         private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
-        private System.Windows.Forms.Button btnFechaRazon;
     }
 }

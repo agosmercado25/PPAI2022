@@ -42,18 +42,9 @@ namespace PPAI.Entidades
             this.modelos = modelos;
         }
 
-        public Marca mostrarNombre(Marca marca, Modelo modelo)
+        public string mostrarNombre()
         {
-            
-            for (int i = 0; i < marca.Modelos.Count; i++)
-            {
-                if (marca.Modelos[i].Nombre.ToString().Equals(modelo.Nombre.ToString()))
-                {
-                    return this;
-                }
-            }
-
-            return null;
+            return this.Nombre.ToString();
         }
     }
 }

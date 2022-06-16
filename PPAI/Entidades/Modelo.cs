@@ -11,6 +11,7 @@ namespace PPAI.Entidades
     {
         private int id;
         private string nombre;
+        private Marca marca;
 
         private int Id
         {
@@ -21,6 +22,12 @@ namespace PPAI.Entidades
         {
             get => nombre;
             set => nombre = value;
+        }
+
+        public Marca Marca
+        {
+            get => marca;
+            set => marca = value;
         }
 
         public Modelo()
@@ -34,14 +41,21 @@ namespace PPAI.Entidades
             this.nombre = nombre;
         }
 
-        public List<object> mostrarMarcaYModelo(RecursoTecnologico rt)
+        public (string,string) mostrarMarcaYModelo()
         {
             Marca marca = Datos.marca1;
-            Marca marcaM = marca.mostrarNombre(marca, this);
-            List<object> list = new List<object>();
-            list.Add(marcaM);
-            list.Add(this);
-            return list;
+            for (int i = 0; i < marca.Modelos.Count; i++)
+            {
+                if (marca.Modelos[i].Nombre.ToString().Equals(this.Nombre.ToString()))
+                {
+                    this.marca = marca;
+                    string nombreMarca = marca.mostrarNombre();
+                    string nombreModelo = this.Nombre.ToString();
+                    return (nombreMarca, nombreModelo);
+                }
+            }
+            return (null,null);
+            
         }
     }
 }

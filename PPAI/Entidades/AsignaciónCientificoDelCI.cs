@@ -50,6 +50,15 @@ namespace PPAI.Entidades
             
         }
 
+        public bool esDeCentroDeInvestigacion(Usuario usuario)
+        {
+            if (usuario.NombreDeUsuario.ToString() == PC.UsuarioActual.ToString())
+            {
+                return true;
+            }
+            return false;
+        }
+
         public (string,string) mostrarDatosCientifico(Turno t)
         {
             for (int i = 0; i < turno.Count; i++)

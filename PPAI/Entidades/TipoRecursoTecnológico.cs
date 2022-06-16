@@ -37,7 +37,7 @@ namespace PPAI.Entidades
             this.descripcion = descripcion;
         }
 
-        public TipoRecursoTecnológico getNombre(RecursoTecnologico rt)
+        public TipoRecursoTecnológico getNombre()
         {
             return this;
         }

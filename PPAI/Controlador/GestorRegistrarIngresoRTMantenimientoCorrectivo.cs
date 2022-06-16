@@ -25,8 +25,10 @@ namespace PPAI.Controlador
         private DateTime timeActual;
         private string razonMantenimientoIngresado;
         private List<Turno> listaTurnos;
-        
-        
+        private List<string> datos;
+
+
+
 
         public GestorRegistrarIngresoRTMantenimientoCorrectivo()
         {
@@ -45,44 +47,37 @@ namespace PPAI.Controlador
 
         public void registrarIngresoRTMantenimientoCorrectivo()
         {
-            CentroDeInvestigacion ci = Datos.ci;
-            obtenerUsuarioLogueado(ci);
             PersonalCientifico pc = obtenerPersonalCientifico();
-            ra = obtenerRTCientifico(pc);
-            lisRT = obtenerRTDisponibles(ra);
-            //ordenarYAgruparRTPorCI()
-            bool mostrar = pantalla.cargarGrillaRTDisponibles(lisRT);
-            if (mostrar)
-            {
-                //listaTurnos = obtenerTurnosRTCancelables();
-                //pantalla.cargarGrillaTurnos(listaTurnos);
-            }
-        }
+            CentroDeInvestigacion ci = Datos.ci;
+            //Revisar 
+            obtenerUsuarioLogueado(ci);
 
-        private List<RecursoTecnologico> obtenerRTDisponibles(AsignaciónResponsableTecnicoRT ra)
-        {
-            lisRT = ra.obtenerRTDisponibles(ra);
-            return lisRT;
-        }
+            ra = obtenerRTCientifico(pc);
+            //Obtener RTDisponibles para la asignacion responsable tecnico RT
+            (lisRT, datos) = obtenerRTDisponibles(ra);
+            //ordenarYAgruparRTPorCI()
+            pantalla.cargarGrillaRTDisponibles(lisRT);
+            pantalla.solicitarSeleccionRT();
+        }       
 
         public void obtenerUsuarioLogueado(CentroDeInvestigacion ci)
         {
-            //bool esLogueadoCI = CentroDeInvestigacion.esLogueadoCI(ci);
             this.sesion = Datos.sesion;
             this.sesion.mostrarCientifico(sesion);
+            //bool esLogueadoCI = ci.esDeCentroDeInvestigacion(ci, sesion);
+            //if (esLogueadoCI)
+            //{
+            //    MessageBox.Show(sesion.ToString());
+            //}
         }
 
         public AsignaciónResponsableTecnicoRT obtenerRTCientifico(PersonalCientifico pc)
         {
-            //MessageBox.Show(pc.ToString());
             asigResTecRT = Datos.crearAsignaciones();
-            //MessageBox.Show(asigResTecRT.ToString());
             for (int i = 0; i < asigResTecRT.Count; i++)
             {
-                //if (asigResTecRT[i].PersonalCientifico.ToString() == pc.ToString())
                 if (asigResTecRT[i].PersonalCientifico.ToString().Equals(pc.ToString()))
                 {
-                    //MessageBox.Show(asigResTecRT[i].esAsignacionVigenteCientifico().ToString());
                     bool es = asigResTecRT[i].esAsignacionVigenteCientifico(asigResTecRT[i]);
                     if (es)
                     {
@@ -90,8 +85,13 @@ namespace PPAI.Controlador
                     }
                 }
             }
-
             return ra;
+        }
+
+        private (List<RecursoTecnologico>, List<string>) obtenerRTDisponibles(AsignaciónResponsableTecnicoRT ra)
+        {
+            (lisRT, datos) = ra.obtenerRTDisponibles(ra);
+            return (lisRT,datos);
         }
 
         public PersonalCientifico obtenerPersonalCientifico()
@@ -137,10 +137,10 @@ namespace PPAI.Controlador
         public List<Turno> obtenerTurnosRTCancelables()
         {
             //List<Turno> listaTurnos = this.rtSelec.Turnos;
-            //for (int i=0; i<listaTurnos.Count; i++)
+            //for (int i = 0; i < listaTurnos.Count; i++)
             //{
             //    List<CambioEstadoTurno> listaCambio = listaTurnos[i].CambioEstado;
-            //    for (int j=0; j<listaCambio.Count; j++)
+            //    for (int j = 0; j < listaCambio.Count; j++)
             //    {
             //        if (listaCambio[i].FechaHoraDesde == listaCambio[i].FechaHoraHasta)
             //        {
@@ -148,12 +148,10 @@ namespace PPAI.Controlador
             //            MessageBox.Show("Hasta" + listaCambio[i].FechaHoraDesde);
             //        }
             //        Estado estados = listaCambio[i].EstadoActual;
-            //        MessageBox.Show(estados.Nombre.ToString());
+            //        //MessageBox.Show(estados.Nombre.ToString());
             //    }
-            //    MessageBox.Show(listaTurnos.Count.ToString());
+            //    //MessageBox.Show(listaTurnos.Count.ToString());
             //}
-
-            
 
             listaTurnos = this.rtSelec.obtenerTurnosCancelablesEnPeriodo(this.rtSelec, fechaFinPrevistaSeleccionada.Day, fechaFinPrevistaSeleccionada.Month);
             return listaTurnos;
