@@ -47,6 +47,7 @@ namespace PPAI.Controlador
             CentroDeInvestigacion ci = Datos.ci;
             //Revisar 
             obtenerUsuarioLogueado(ci);
+            
             ra = obtenerRTCientifico(pc);
             //Obtener RTDisponibles para la asignacion responsable tecnico RT
             (lisRT) = obtenerRTDisponibles(ra);
