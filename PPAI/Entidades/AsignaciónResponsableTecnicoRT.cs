@@ -79,6 +79,7 @@ namespace PPAI.Entidades
         public bool esAsignacionVigenteCientifico(AsignaciónResponsableTecnicoRT asignaciones)
         {
             return esViegente(asignaciones);
+            
         }
 
         private bool esViegente(AsignaciónResponsableTecnicoRT asignaciones)
